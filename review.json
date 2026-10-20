@@ -1,17 +1,17 @@
 {
   "znamka": 8,
   "slabiny": [
-    "Otázky (PC 1440): levý sloupec má jen nadpis „Na co se firmy ptají“ a pod ním zůstává velká prázdná plocha vedle dlouhého seznamu otázek. Pod nadpis přidat krátkou větu a odkaz na ondrej.hejduk@dreamrental.eu nebo tlačítko „Navrhnout poukaz“ se sticky pozicí. Sloupec tím nebude prázdný a přibude další místo pro konverzi.",
-    "Recenze (PC): text v kartách recenzí a podpisy se jménem a odkazem „recenze na Googlu“ jsou na PC drobné, zhruba 13 px a šedé. Text recenze zvětšit na 16 px s řádkováním 1,5 a podpis na 14 px, ať citace čtou i HR lidé bez přibližování.",
-    "Flotila (PC): karty aut mají značku a model drobným písmem dole a šipky karuselu jsou daleko vpravo, oddělené od karet. Název modelu zvětšit na 18–20 px, šipky posadit k pravému okraji řady karet a odkaz „Celá flotila s parametry na dreamrental.eu“ udělat jako výraznější textové tlačítko se šipkou."
+    "Mobil 390, hero (buňka 1): pod obrázkem s andílkem a autem zůstává velká bílá plocha, nebe a mráčky se nejspíš ukážou až po animaci. Mráčky a navy pozadí přechodu do sekce Dárky musí být vidět hned bez reveal animace a bez lazy-loadu, aby se hero na telefonu nikdy nezobrazilo s prázdným bílým pruhem.",
+    "PC 1440, přechod hero → „Tři dárky pod stromeček“ (buňky 1 a 3): pod mráčky je asi 150 px prázdné bílé plochy, než přijde nadpis. Horní odsazení sekce zmenšit zhruba na polovinu, aby karty dárků s cenami vyjely nad ohyb už na první scroll.",
+    "Flotila PC: šipky karuselu sedí pořád na úplném konci řádku, pod ořezanou čtvrtou kartou, a s tlačítkem „Celá flotila…“ vlevo spolu nesouvisí. Dát šipky na stejnou úroveň jako tlačítko, hned vedle něj nebo zarovnané k nadpisu sekce vpravo nahoře, ať je jasné, že řada pokračuje."
   ],
   "zavazne": [],
   "silne": [
-    "Koncept „vánoční dárek ve voze snů“ drží celý web: noční nebe s mráčky, andílek s klíčkem, stuhy přes karty aut, světýlka a zlatá brána v závěrečné výzvě. Všechno navazuje na 3D vizuál dreamrental.eu.",
-    "Výtky z minulého kola jsou opravené. Mezery mezi sekcemi na mobilu 390 px jsou výrazně menší a obrazovky už nepůsobí prázdně. Štítek „Nejoblíbenější“ je teď v briefu doložený z dreamrental-poukazy.eu. Logo v hlavičce je větší a čitelné. Podle QA nikde nejsou malé dotykové cíle ani přetečení na žádné ze 6 šířek.",
-    "Konfigurátor s živým náhledem poukazu (věnování, logo, počet kusů, součet s úsporou) je skutečně užitečná funkce pro firemní objednávku, ne dekorace.",
-    "Všechny ceny, slevy 5 %, recenze (4,9 ze 157, tři jmenované recenze s odkazem na Google) i podmínky odpovídají briefu. Kontakt obchodu je v závěru a CTA „Navrhnout poukaz“ je stále v hlavičce."
+    "Všechny tři minulé výtky jsou opravené. Sloupec u Otázek má vedle nadpisu větu, odkaz na ondrej.hejduk@dreamrental.eu a tlačítko „Navrhnout poukaz“. Recenze jsou větší a čitelnější. Karty flotily mají výrazný název modelu a odkaz na flotilu je teď tlačítko se šipkou.",
+    "Jasný koncept „dárek z nebe pod stromeček“ vychází přímo z 3D vizuálu DREAMRENTAL (mráčky, andílek s klíčkem, auto na obláčku, zlatá brána) a drží se v celé stránce: světýlka, visačky v Jak to probíhá a stuha na poukazu.",
+    "Konfigurátor s živým náhledem poukazu, výpočtem ceny a úsporou je skutečná funkce pro HR, ne jen dekorace. Všechny ceny, recenze a 4,9 z 157 sedí s briefem.",
+    "Logo klienta vlevo v hlavičce, Outfit s českými háčky v pořádku, černá tlačítka podle brandu, žádné přetečení na 6 šířkách a mobil působí jako navržený pro telefon."
   ],
-  "verdikt": "Všechny tři výtky z minulého kola jsou opravené a nová závažná vada není, takže známka zůstává 8. Web je jednolitý a prodejní a dá se poslat klientovi. Zbývající slabiny jsou jen doladění typografie a vyplnění prázdných míst.",
-  "_hash": "db4ee4e058bb6be9fd2e05b208848f4a5adc66a4"
+  "verdikt": "Opravené kolo splnilo všechny výtky a nepřibyla žádná závažná vada. Web je konzistentní vánoční koncept postavený na vizuálu klienta, s ověřenými fakty a funkčním konfigurátorem. Doporučuji odeslat.",
+  "_hash": "e051f923189d2e0c2fffcd8aa57ff673e0063718"
 }

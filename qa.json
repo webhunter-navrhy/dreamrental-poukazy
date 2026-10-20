@@ -32,18 +32,18 @@
         "pocet_pretekajicich": 0
       }
     },
-    "preneseno_PC_MB": 0.69,
+    "preneseno_PC_MB": 0.76,
     "nejvetsi_obrazek_PC": {
-      "kB": 63,
-      "url": "http://localhost:8790/dreamrental-poukazy/img/scena-darek-vanoce-1280.webp"
+      "kB": 81,
+      "url": "http://localhost:8790/dreamrental-poukazy/img/scena-brana-vyrez-1008.webp"
     },
     "snimku_PC": 11,
-    "preneseno_mobil_MB": 0.78,
+    "preneseno_mobil_MB": 0.86,
     "nejvetsi_obrazek_mobil": {
       "kB": 81,
       "url": "http://localhost:8790/dreamrental-poukazy/img/auta-mercedes-amg-gt-63s-1185.webp"
     },
-    "snimku_mobil": 11,
+    "snimku_mobil": 13,
     "seo": {
       "title": "Firemní vánoční poukazy DREAMRENTAL – den ve voze snů s vaším logem",
       "description": "Firemní vánoční poukazy na den za volantem Tesly Cybertruck, BMW M2 nebo Mercedesu-AMG. S logem vaší",
@@ -65,7 +65,7 @@
     "font_text": "Outfit",
     "podstranky": {
       "stranek": 2,
-      "obrazku": 52
+      "obrazku": 50
     }
   }
 }

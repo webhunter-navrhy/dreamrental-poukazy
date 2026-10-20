@@ -116,7 +116,16 @@ class Obrazky:
         zdroj = os.path.join(IMG, nazev)
         if not os.path.exists(zdroj):
             return None
-        im = ImageOps.fit(ImageOps.exif_transpose(Image.open(zdroj)).convert("RGB"), (1200, 630), Image.LANCZOS)
+        im = ImageOps.exif_transpose(Image.open(zdroj))
+        if im.mode in ("RGBA", "LA", "P"):
+            # průhledný výřez: zmenšit do plochy a podložit barvou webu, jinak by JPEG měl černé pozadí
+            im = im.convert("RGBA")
+            im.thumbnail((1080, 560), Image.LANCZOS)
+            pod = Image.new("RGBA", (1200, 630), self.pozadi)
+            pod.alpha_composite(im, ((1200 - im.width) // 2, (630 - im.height) // 2))
+            im = pod.convert("RGB")
+        else:
+            im = ImageOps.fit(im.convert("RGB"), (1200, 630), Image.LANCZOS)
         im.save(os.path.join(DIST, "og.jpg"), quality=84, optimize=True)
         return "og.jpg"
 
@@ -170,6 +179,7 @@ def main():
             hashe[p] = hash_souboru(cil)
         return f"{base}{p}?v={hashe[p]}"
 
+    obr.pozadi = site.get("og_pozadi") or site.get("theme_color", "#ffffff")
     og = obr.og(site["og_image"]) if site.get("og_image") else None
     if not og:
         print("VAROVÁNÍ: chybí og_image (site.og_image -> soubor v img/)")

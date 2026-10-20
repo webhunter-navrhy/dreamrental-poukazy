@@ -1,3 +1,6 @@
 img/scena/darek-vanoce.webp – vánoční úprava darek-na-mraku.webp z dreamrental.eu (FLUX.1 Kontext, sníh + zimostráz), pozadí odstraněno BRIA RMBG 2.0, 20. 10. 2026
 img/scena/cesta-vanoce.webp – vánoční noční úprava cesta.webp z dreamrental.eu (FLUX.1 Kontext), 20. 10. 2026
 img/scena/brana-vanoce.webp – vánoční noční úprava brana.webp z dreamrental.eu (FLUX.1 Kontext), 20. 10. 2026
+img/scena/atelier.webp – pozadí karet dárků (noční sníh, bokeh), vygenerováno FLUX.1 Krea dev, bez aut a textu, 20. 10. 2026
+img/scena/brana-vyrez.webp – výřez brana.webp z dreamrental.eu (rembg u2net), 20. 10. 2026
+img/scena/cesmina.webp – snítka cesmíny, 3D render FLUX.1 dev, výřez rembg, 20. 10. 2026
