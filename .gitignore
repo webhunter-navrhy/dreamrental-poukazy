@@ -1,0 +1,7 @@
+dist/
+.cache/
+qa/
+__pycache__/
+_snimky/
+*.bak-*
+kolaz_*.png

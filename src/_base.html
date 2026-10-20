@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ titulek or site.nazev }}</title>
+<meta name="description" content="{{ popis or site.popis }}">
+{% if site.navrh or noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<meta name="theme-color" content="{{ site.theme_color }}">
+<link rel="canonical" href="{{ site.url }}{{ cesta or '' }}">
+<link rel="icon" href="{{ base }}logo-ikona.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:title" content="{{ titulek or site.nazev }}">
+<meta property="og:description" content="{{ popis or site.popis }}">
+<meta property="og:url" content="{{ site.url }}{{ cesta or '' }}">
+{% if og_url %}<meta property="og:image" content="{{ og_url }}">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">{% endif %}
+<link rel="preload" href="{{ base }}fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ base }}fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% block head %}{% endblock %}
+{% if jsonld %}<script type="application/ld+json">{{ jsonld|safe }}</script>{% endif %}
+</head>
+<body>
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
+<header class="hlavicka">
+  <div class="hlavicka__in">
+    <a href="{{ url('') }}" class="logo"><img src="{{ base }}{{ site.logo }}" alt="{{ site.znacka }}" width="160" height="48"></a>
+    <nav class="menu" aria-label="Hlavní">
+      {% for n in site.nav %}<a href="{{ n.href if cesta == '' else url('') ~ n.href }}">{{ n.text }}</a>{% endfor %}
+    </nav>
+    <a class="tlacitko tlacitko--male" href="{{ '#poukaz' if cesta == '' else url('') ~ '#poukaz' }}">Navrhnout poukaz <span class="sipka" aria-hidden="true"></span></a>
+  </div>
+</header>
+<main id="obsah">
+{% block obsah %}{% endblock %}
+</main>
+<footer class="paticka">
+  <div class="paticka__in">
+    <img src="{{ base }}{{ site.logo }}" alt="{{ site.znacka }}" width="140" height="42" loading="lazy">
+    <p>{{ site.znacka }} · {{ site.firma }}, IČO {{ site.ico }}, {{ site.sidlo }}</p>
+    <p class="paticka__odkazy">
+      <a href="mailto:{{ site.kontakt.email_obchod }}">{{ site.kontakt.email_obchod }}</a>
+      <a href="{{ url('ochrana-osobnich-udaju') }}">Ochrana osobních údajů</a>
+      <a href="https://dreamrental.eu">dreamrental.eu</a>
+    </p>
+  </div>
+</footer>
+<script src="{{ asset('js/main.js') }}" defer></script>
+</body>
+</html>

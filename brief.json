@@ -1,0 +1,68 @@
+{
+  "firma": "DREAMRENTAL (ADDICTESTATE GROUP s.r.o.)",
+  "obor": "půjčovna sportovních a luxusních aut, firemní vánoční dárkové poukazy",
+  "mesto": "Praha",
+  "ico": "19254598",
+  "kontakty": {
+    "obchod": "ondrej.hejduk@dreamrental.eu",
+    "email_obchod": "obchod@dreamrental.eu",
+    "telefon_obchod": "+420 778 082 831",
+    "zdroj": "dreamrental-poukazy.eu, dreamrental.eu (patička)"
+  },
+  "cilova_skupina": "firmy (HR, majitelé) vybírající vánoční dárky pro zaměstnance, partnery a klienty",
+  "ton": "vřelý, jednoduchý, bez agresivního prodeje",
+  "brand": {
+    "logo": "static/logo.svg (z dreamrental-poukazy.eu, shodné s dreamrental.eu)",
+    "barvy": "bílá, světlé nebe, černá tlačítka, zlatá stuha/svatozář",
+    "pismo": "Outfit + Inter (dreamrental.eu)",
+    "vizual": "3D mráčky, andílek s klíčkem, auto na obláčku, zlatá brána (dreamrental.eu/hero, /images/content)"
+  },
+  "fotky": "auta z dreamrental.eu/cars/api (průhledné, ~1100 px), 3D scény z dreamrental.eu",
+  "fakta": [
+    {
+      "fakt": "Sportovní den: BMW M2, Mercedes C63 nebo Alpine A110 GTS, 4 990 Kč, pro firmy 4 740 Kč (−5 %)",
+      "zdroj": "dreamrental-poukazy.eu"
+    },
+    {
+      "fakt": "Den s Teslou Cybertruck 10 990 Kč, pro firmy 10 440 Kč",
+      "zdroj": "dreamrental-poukazy.eu"
+    },
+    {
+      "fakt": "Prémiová jízda: Mercedes-AMG GT 63 S, AMG SL43 nebo BMW M4 Cabrio, 5 990 Kč, pro firmy 5 690 Kč",
+      "zdroj": "dreamrental-poukazy.eu"
+    },
+    {
+      "fakt": "logo a věnování na poukazu, faktura na IČO, platnost 12 měsíců, hotovo do 3 dnů (PDF nebo osobně v Praze)",
+      "zdroj": "dreamrental-poukazy.eu"
+    },
+    {
+      "fakt": "termín si obdarovaný domluví sám; poukaz na částku = výběr z flotily",
+      "zdroj": "dreamrental-poukazy.eu, dreamrental.eu"
+    },
+    {
+      "fakt": "Google 4,9 z 157 recenzí",
+      "zdroj": "dreamrental.eu 20. 10. 2026 (poukazy.eu uvádí 155)"
+    },
+    {
+      "fakt": "pojištění v ceně, předání nonstop v Praze, přistavení po ČR",
+      "zdroj": "dreamrental.eu hero"
+    },
+    {
+      "fakt": "recenze D. Petrov, J. Nedoma, P. Nejezchleb",
+      "zdroj": "Google, odkazy z dreamrental-poukazy.eu"
+    },
+    {
+      "fakt": "ADDICTESTATE GROUP s.r.o., Kladenská 542/38, 160 00 Praha 6; provozovna Ke Kablu 683/3, Praha-Dolní Měcholupy",
+      "zdroj": "dreamrental.eu patička"
+    },
+    {
+      "fakt": "Štítek „Nejoblíbenější“ u poukazu s Cybertruckem",
+      "zdroj": "https://dreamrental-poukazy.eu (původní web, karta Cybertruck)"
+    }
+  ],
+  "chybi": [
+    "zda platí sleva 5 % i u poukazu na částku",
+    "ukázka skutečného PDF poukazu",
+    "uzávěrka objednávek před Vánoci"
+  ]
+}

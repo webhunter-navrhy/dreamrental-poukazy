@@ -1,0 +1,20 @@
+[
+  {"znacka": "Tesla", "model": "Cybertruck", "foto": "auta/tesla-cybertruck.webp"},
+  {"znacka": "Porsche", "model": "Cayman GT4 MR", "foto": "auta/porsche-gt4-mr.webp"},
+  {"znacka": "Audi", "model": "R8", "foto": "auta/audi-r8.webp"},
+  {"znacka": "Mercedes-AMG", "model": "GT 63 S", "foto": "auta/mercedes-amg-gt-63s.webp"},
+  {"znacka": "BMW", "model": "M2", "foto": "auta/bmw-m2.webp"},
+  {"znacka": "Alpine", "model": "A110 GTS", "foto": "auta/alpine-a110-gts.webp"},
+  {"znacka": "Mercedes-AMG", "model": "SL43", "foto": "auta/mercedes-amg-sl43.webp"},
+  {"znacka": "BMW", "model": "M4 Cabrio", "foto": "auta/bmw-m4-cabrio.webp"},
+  {"znacka": "Mercedes-AMG", "model": "G63", "foto": "auta/mercedes-amg-g63.webp"},
+  {"znacka": "BMW", "model": "M5", "foto": "auta/bmw-m5.webp"},
+  {"znacka": "Audi", "model": "RS6", "foto": "auta/audi-rs6.webp"},
+  {"znacka": "Mercedes-AMG", "model": "C63 S E Performance", "foto": "auta/c63-se.webp"},
+  {"znacka": "BMW", "model": "M3 Competition", "foto": "auta/bmw-m3-competition.webp"},
+  {"znacka": "Dodge", "model": "Challenger", "foto": "auta/dodge-challenger.webp"},
+  {"znacka": "BMW", "model": "X6", "foto": "auta/bmw-x6.webp"},
+  {"znacka": "Mercedes-AMG", "model": "C63", "foto": "auta/mercedes-c63.webp"},
+  {"znacka": "Volkswagen", "model": "Golf R", "foto": "auta/volkswagen-golf-r.webp"},
+  {"znacka": "Mercedes-AMG", "model": "A35", "foto": "auta/mercedes-a35-amg.webp"}
+]

@@ -1,0 +1,34 @@
+{
+  "slug": "dreamrental-poukazy",
+  "nazev": "DREAMRENTAL – firemní vánoční poukazy",
+  "znacka": "DREAMRENTAL",
+  "url": "https://webhunter-navrhy.github.io/dreamrental-poukazy/",
+  "base": "/dreamrental-poukazy/",
+  "lang": "cs",
+  "popis": "Firemní vánoční poukazy na den za volantem Tesly Cybertruck, BMW M2 nebo Mercedesu-AMG. S logem vaší firmy, na fakturu, platnost 12 měsíců. Praha.",
+  "navrh": true,
+  "domena": "",
+  "og_image": "scena/darek-na-mraku.webp",
+  "logo": "logo.svg",
+  "theme_color": "#e9f1fc",
+  "typ": "AutoRental",
+  "ico": "19254598",
+  "firma": "ADDICTESTATE GROUP s.r.o.",
+  "sidlo": "Kladenská 542/38, 160 00 Praha 6",
+  "kontakt": {
+    "email": "ondrej.hejduk@dreamrental.eu",
+    "email_obchod": "obchod@dreamrental.eu",
+    "telefon": "+420 778 082 831",
+    "adresa": {"ulice": "Ke Kablu 683/3", "psc": "102 00", "mesto": "Praha-Dolní Měcholupy", "zeme": "CZ"}
+  },
+  "hodnoceni": {"znamka": "4,9", "pocet": 157, "url": "https://www.google.com/maps?cid=7653946558548366329"},
+  "oteviraci_doba": [],
+  "sameas": ["https://dreamrental.eu"],
+  "cenove_rozpeti": "4 740–10 440 Kč",
+  "nav": [
+    {"text": "Dárky", "href": "#darky"},
+    {"text": "Váš poukaz", "href": "#poukaz"},
+    {"text": "Jak to probíhá", "href": "#postup"},
+    {"text": "Otázky", "href": "#otazky"}
+  ]
+}

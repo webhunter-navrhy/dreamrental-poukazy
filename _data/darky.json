@@ -1,0 +1,38 @@
+[
+  {
+    "id": "cybertruck",
+    "pro": "Pro někoho výjimečného",
+    "nazev": "Den s Teslou Cybertruck",
+    "kratce": "Den s Cybertruckem",
+    "auta": "Nerezový elektrický pick-up, který málokdo řídil",
+    "foto": "auta/tesla-cybertruck.webp",
+    "alt": "Tesla Cybertruck z flotily DREAMRENTAL",
+    "bezne": 10990,
+    "firmy": 10440,
+    "hlavni": true
+  },
+  {
+    "id": "sportovni",
+    "pro": "Pro kolegy a tým",
+    "nazev": "Sportovní den",
+    "kratce": "Sportovní den",
+    "auta": "BMW M2, Mercedes C63 nebo Alpine A110 GTS",
+    "foto": "auta/bmw-m2.webp",
+    "alt": "Červené BMW M2 z flotily DREAMRENTAL",
+    "bezne": 4990,
+    "firmy": 4740,
+    "hlavni": false
+  },
+  {
+    "id": "premiova",
+    "pro": "Pro partnery a klienty",
+    "nazev": "Prémiová jízda",
+    "kratce": "Prémiová jízda",
+    "auta": "Mercedes-AMG GT 63 S, AMG SL43 nebo BMW M4 Cabrio",
+    "foto": "auta/mercedes-amg-gt-63s.webp",
+    "alt": "Černý Mercedes-AMG GT 63 S z flotily DREAMRENTAL",
+    "bezne": 5990,
+    "firmy": 5690,
+    "hlavni": false
+  }
+]

@@ -1,0 +1,253 @@
+{% extends "_base.html" %}
+{% set titulek = 'Firemní vánoční poukazy DREAMRENTAL – den ve voze snů s vaším logem' %}
+{% set cesta = '' %}
+{% macro kc(n) %}{{ '{:,}'.format(n).replace(',', ' ') }}&nbsp;Kč{% endmacro %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"OfferCatalog","name":"Firemní vánoční poukazy DREAMRENTAL","itemListElement":[{% for d in data.darky %}{"@type":"Offer","name":{{ ('Dárkový poukaz – ' ~ d.nazev)|tojson }},"description":{{ d.auta|tojson }},"price":"{{ d.firmy }}","priceCurrency":"CZK","seller":{"@type":"Organization","name":"DREAMRENTAL"}}{% if not loop.last %},{% endif %}{% endfor %}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for o in data.otazky %}{"@type":"Question","name":{{ o.q|tojson }},"acceptedAnswer":{"@type":"Answer","text":{{ o.a|tojson }}}}{% if not loop.last %},{% endif %}{% endfor %}]}</script>
+{% endblock %}
+{% block obsah %}
+
+<!-- ÚVOD: nebe Dreamrentalu, dárek na mráčku, andílek nese klíček -->
+<section class="uvod">
+  <div class="nebe" aria-hidden="true">
+    <img class="nebe__slunce" src="{{ img_url('scena/slunce.webp', 640) }}" alt="" width="440" height="440">
+    <img class="mrak mrak--a" src="{{ img_url('scena/mrak-1.webp', 640) }}" alt="" width="703" height="414">
+    <img class="mrak mrak--b" src="{{ img_url('scena/mrak-3.webp', 640) }}" alt="" width="553" height="311">
+    <img class="mrak mrak--c" src="{{ img_url('scena/mrak-2.webp', 640) }}" alt="" width="247" height="156">
+  </div>
+  <div class="uvod__in">
+    <div class="uvod__text">
+      <p class="stitek"><span class="stitek__hvezda" aria-hidden="true"></span>Firemní dárky na Vánoce 2026</p>
+      <h1>Dejte týmu k&nbsp;Vánocům den ve&nbsp;voze snů.</h1>
+      <p class="uvod__perex">Dárkové poukazy DREAMRENTAL s&nbsp;logem a&nbsp;věnováním vaší firmy. Tesla Cybertruck, BMW&nbsp;M2 nebo Mercedes-AMG na celý den, na fakturu a&nbsp;s&nbsp;platností 12&nbsp;měsíců.</p>
+      <div class="uvod__akce">
+        <a class="tlacitko" href="#poukaz">Navrhnout poukaz <span class="sipka" aria-hidden="true"></span></a>
+        <a class="odkaz" href="#darky">Prohlédnout dárky</a>
+      </div>
+      <a class="hodnoceni" href="{{ site.hodnoceni.url }}" rel="noopener">
+        <svg class="g" viewBox="0 0 48 48" width="20" height="20" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2A11.9 11.9 0 0 1 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3a12 12 0 0 1-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>
+        <span class="hvezdy" aria-hidden="true">★★★★★</span>
+        <span><b>{{ site.hodnoceni.znamka }}</b> z&nbsp;{{ site.hodnoceni.pocet }} recenzí na Googlu</span>
+      </a>
+    </div>
+    <div class="uvod__scena">
+      <img class="uvod__andel" src="{{ img_url('scena/andel.webp', 640) }}" alt="" width="561" height="640">
+      {{ img('scena/darek-na-mraku.webp', 'Černý dárek se zlatou stuhou a červené sportovní auto na mráčku', sizes='(min-width: 64rem) 52vw, 100vw', cls='uvod__darek') }}
+    </div>
+  </div>
+  <ul class="vyhody" role="list">
+    <li>Vaše logo a&nbsp;věnování</li>
+    <li>Faktura na IČO</li>
+    <li>Platnost 12&nbsp;měsíců</li>
+    <li>Hotovo do 3&nbsp;dnů</li>
+  </ul>
+</section>
+
+<!-- TŘI DÁRKY -->
+<section class="darky" id="darky">
+  <div class="sekce__hlava">
+    <h2>Tři dárky podle toho, komu je dáváte</h2>
+    <p>Ceny jsou konečné, za jeden poukaz včetně DPH. Firmy mají 5&nbsp;% dolů.</p>
+  </div>
+  <div class="darky__mrizka">
+    {% for d in data.darky %}
+    <article class="darek{% if d.hlavni %} darek--hlavni{% endif %}">
+      <div class="darek__foto">
+        <div class="darek__obal">
+          <span class="svatozar" aria-hidden="true"></span>
+          {{ img(d.foto, d.alt, sizes='(min-width: 64rem) 40vw, 90vw', cls='darek__auto') }}
+        </div>
+        {% if d.hlavni %}<span class="darek__odznak">Nejoblíbenější</span>{% endif %}
+      </div>
+      <div class="darek__text">
+        <p class="darek__pro">{{ d.pro }}</p>
+        <h3>{{ d.nazev }}</h3>
+        <p class="darek__auta">{{ d.auta }}</p>
+        <div class="darek__cena">
+          <span class="darek__kc">{{ kc(d.firmy) }}</span>
+          <span class="darek__bezne"><s>{{ kc(d.bezne) }}</s> běžná cena</span>
+        </div>
+        <button class="tlacitko tlacitko--obrys" type="button" data-vybrat="{{ d.id }}">Navrhnout tento poukaz <span class="sipka" aria-hidden="true"></span></button>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- KONFIGURÁTOR: poukaz se balí naživo -->
+<section class="poukaz" id="poukaz">
+  <div class="sekce__hlava sekce__hlava--vlevo">
+    <h2>Navrhněte si poukaz. Hned uvidíte, jak bude vypadat.</h2>
+    <p>Napište název firmy a&nbsp;věnování, přidejte logo. Spočítáme cenu a&nbsp;poptávku vám připravíme do e-mailu.</p>
+  </div>
+  <div class="poukaz__in">
+    <div class="poukaz__nahled">
+      <div class="karta" id="karta" aria-live="polite">
+        <div class="karta__obsah">
+          <img class="karta__logo" src="{{ base }}logo-bila.svg" alt="DREAMRENTAL" width="120" height="36">
+          <p class="karta__typ">Dárkový poukaz · Vánoce 2026</p>
+          <p class="karta__nazev" data-k="nazev">Den s&nbsp;Teslou Cybertruck</p>
+          <p class="karta__od">pro vás od <span data-k="firma">vaší firmy</span></p>
+          <p class="karta__venovani" data-k="venovani">Děkujeme za skvělý rok. Užijte si jízdu!</p>
+          <dl class="karta__udaje">
+            <div><dt>Platnost</dt><dd>12 měsíců</dd></div>
+            <div><dt>Termín</dt><dd>podle vás</dd></div>
+            <div><dt>Kód</dt><dd>DR-2026-••••</dd></div>
+          </dl>
+        </div>
+        <div class="karta__stuha" aria-hidden="true">
+          <svg class="karta__masle" viewBox="0 0 120 70" width="120" height="70"><defs><linearGradient id="zl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dc9a"/><stop offset=".5" stop-color="#d4a84f"/><stop offset="1" stop-color="#a87a2a"/></linearGradient></defs><path d="M60 36C44 10 14 4 10 18s20 22 50 18z" fill="url(#zl)"/><path d="M60 36C76 10 106 4 110 18S90 40 60 36z" fill="url(#zl)"/><path d="M57 38 40 68l9-2 6 4 5-30zM63 38l17 30-9-2-6 4-5-30z" fill="url(#zl)" opacity=".9"/><ellipse cx="60" cy="36" rx="9" ry="8" fill="#e9c477"/></svg>
+          <div class="karta__visacka">
+            <img data-k="logo" alt="" hidden>
+            <span data-k="logo-text">Vaše logo</span>
+          </div>
+        </div>
+        <img class="karta__auto" data-k="foto" src="{{ img_url('auta/tesla-cybertruck.webp', 640) }}" alt="" width="640" height="344">
+      </div>
+      <p class="poukaz__pozn">Ukázka. Finální podobu poukazu s&nbsp;vaším logem pošleme v&nbsp;nabídce.</p>
+    </div>
+
+    <form class="formular" id="formular" novalidate>
+      <fieldset class="pole">
+        <legend>1. Který dárek</legend>
+        <div class="volby">
+          {% for d in data.darky %}
+          <label class="volba"><input type="radio" name="darek" value="{{ d.id }}" data-nazev="{{ d.nazev }}" data-cena="{{ d.firmy }}" data-bezne="{{ d.bezne }}" data-foto="{{ img_url(d.foto, 640) }}"{% if d.hlavni %} checked{% endif %}><span><b>{{ d.kratce }}</b><small>{{ kc(d.firmy) }}</small></span></label>
+          {% endfor %}
+          <label class="volba"><input type="radio" name="darek" value="castka" data-nazev="Poukaz na jízdu snů" data-foto="{{ img_url('auta/porsche-gt4-mr.webp', 640) }}"><span><b>Na částku</b><small>vyberou si sami</small></span></label>
+        </div>
+        <label class="pole__castka" hidden>Hodnota jednoho poukazu
+          <span class="vstup vstup--kc"><input type="number" name="castka" min="1000" step="500" value="5000" inputmode="numeric"><i>Kč</i></span>
+        </label>
+      </fieldset>
+
+      <fieldset class="pole">
+        <legend>2. Od koho a&nbsp;s&nbsp;jakým přáním</legend>
+        <label>Název firmy
+          <span class="vstup"><input type="text" name="firma" maxlength="40" placeholder="např. Novák &amp; syn s.r.o." autocomplete="organization"></span>
+        </label>
+        <label>Věnování na poukaz
+          <span class="vstup"><textarea name="venovani" rows="2" maxlength="90">Děkujeme za skvělý rok. Užijte si jízdu!</textarea></span>
+        </label>
+        <div class="napady" aria-label="Nápady na věnování">
+          <button type="button" data-venovani="Děkujeme za skvělý rok. Užijte si jízdu!">Děkujeme za skvělý rok</button>
+          <button type="button" data-venovani="Za rok, na který budeme rádi vzpomínat.">Za rok, na který budeme vzpomínat</button>
+          <button type="button" data-venovani="Tohle si zasloužíte. Šťastnou cestu!">Tohle si zasloužíte</button>
+        </div>
+        <label class="nahrat">
+          <input type="file" name="logo" accept="image/png,image/jpeg,image/svg+xml,image/webp">
+          <span class="nahrat__ikona" aria-hidden="true">+</span>
+          <span><b>Přidat logo do náhledu</b><small>Zůstane jen ve vašem prohlížeči, nikam se neodesílá.</small></span>
+        </label>
+      </fieldset>
+
+      <fieldset class="pole">
+        <legend>3. Kolik poukazů</legend>
+        <div class="pocet">
+          <button type="button" data-krok="-1" aria-label="O jeden méně">−</button>
+          <input type="number" name="pocet" value="10" min="1" max="999" inputmode="numeric" aria-label="Počet poukazů">
+          <button type="button" data-krok="1" aria-label="O jeden víc">+</button>
+        </div>
+      </fieldset>
+
+      <div class="souhrn" aria-live="polite">
+        <p class="souhrn__radek"><span data-s="vzorec">10 × 10&nbsp;440&nbsp;Kč</span><span data-s="celkem" class="souhrn__celkem">104&nbsp;400&nbsp;Kč</span></p>
+        <p class="souhrn__pozn" data-s="pozn">včetně DPH · oproti běžné ceně ušetříte 5&nbsp;500&nbsp;Kč</p>
+        <a class="tlacitko tlacitko--plne" id="poptat" href="mailto:{{ site.kontakt.email }}">Poslat poptávku <span class="sipka" aria-hidden="true"></span></a>
+        <p class="souhrn__info">Otevře se vám e-mail s&nbsp;vyplněnou poptávkou pro <a href="mailto:{{ site.kontakt.email }}">{{ site.kontakt.email }}</a>. Nic neplatíte, nejdřív pošleme nabídku a&nbsp;návrh poukazu.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- JAK TO PROBÍHÁ: nebeská cesta -->
+<section class="postup" id="postup">
+  <div class="postup__obraz">
+    {{ img('scena/cesta.webp', 'Bílé auto jede po cestě z mráčků vstříc slunci', sizes='100vw') }}
+    <div class="postup__nadpis">
+      <h2>Od e-mailu k&nbsp;poukazům za tři dny</h2>
+    </div>
+  </div>
+  <ol class="kroky" role="list">
+    <li><span class="kroky__den">Den 1</span><h3>Napíšete nám</h3><p>Počet poukazů a&nbsp;jejich hodnotu. Stačí poptávka z&nbsp;konfigurátoru nebo odpověď na e-mail.</p></li>
+    <li><span class="kroky__den">Den 1–2</span><h3>Pošleme nabídku</h3><p>S&nbsp;cenou a&nbsp;návrhem poukazu s&nbsp;vaším logem a&nbsp;věnováním. Fakturujeme na IČO.</p></li>
+    <li><span class="kroky__den">Do 3&nbsp;dnů</span><h3>Dodáme poukazy</h3><p>V&nbsp;PDF k&nbsp;tisku nebo k&nbsp;odeslání. V&nbsp;Praze je předáme i&nbsp;osobně.</p></li>
+  </ol>
+</section>
+
+<!-- FLOTILA -->
+<section class="flotila" id="flotila">
+  <div class="sekce__hlava sekce__hlava--radek">
+    <div>
+      <h2>Poukaz na částku? Vybere si z&nbsp;celé flotily.</h2>
+      <p>Obdarovaný si sám zvolí auto i&nbsp;den. Pojištění je v&nbsp;ceně, vůz předáváme nonstop v&nbsp;Praze.</p>
+    </div>
+    <div class="flotila__sipky">
+      <button type="button" data-posun="-1" aria-label="Předchozí auta"><span class="sipka sipka--zpet" aria-hidden="true"></span></button>
+      <button type="button" data-posun="1" aria-label="Další auta"><span class="sipka" aria-hidden="true"></span></button>
+    </div>
+  </div>
+  <ul class="flotila__pas" role="list" tabindex="0" aria-label="Auta ve flotile">
+    {% for a in data.flotila %}
+    <li class="auto">
+      {{ img(a.foto, a.znacka ~ ' ' ~ a.model, sizes='(min-width: 64rem) 26rem, 72vw') }}
+      <p><small>{{ a.znacka }}</small>{{ a.model }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="flotila__vse"><a class="odkaz" href="https://dreamrental.eu/auta/">Celá flotila s&nbsp;parametry na dreamrental.eu</a></p>
+</section>
+
+<!-- RECENZE -->
+<section class="recenze">
+  <div class="recenze__in">
+    <div class="recenze__hlava">
+      <h2>Co říkají lidé, kteří u&nbsp;nás jezdili</h2>
+      <a class="recenze__skore" href="{{ site.hodnoceni.url }}" rel="noopener">
+        <b>{{ site.hodnoceni.znamka }}</b>
+        <span><span class="hvezdy" aria-hidden="true">★★★★★</span><br>{{ site.hodnoceni.pocet }} recenzí na Googlu</span>
+      </a>
+    </div>
+    <div class="recenze__mrizka">
+      {% for r in data.recenze %}
+      <figure class="recenze__karta">
+        <span class="hvezdy" aria-label="5 hvězdiček z 5">★★★★★</span>
+        <blockquote>{{ r.text }}</blockquote>
+        <figcaption>{{ r.jmeno }} · <a href="{{ r.url }}" rel="noopener">recenze na Googlu</a></figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- OTÁZKY -->
+<section class="otazky" id="otazky">
+  <div class="otazky__in">
+    <h2>Na co se firmy ptají</h2>
+    <div class="otazky__seznam">
+      {% for o in data.otazky %}
+      <details{% if loop.first %} open{% endif %}>
+        <summary>{{ o.q }}</summary>
+        <p>{{ o.a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ZLATÁ BRÁNA -->
+<section class="brana" id="kontakt">
+  {{ img('scena/brana.webp', 'Červené sportovní auto projíždí zlatou bránou na mráčku, kolem létají andílci', sizes='100vw', cls='brana__obraz') }}
+  <div class="brana__text">
+    <h2>Brána je otevřená. Kolik poukazů chystáte?</h2>
+    <p>Napište počet a&nbsp;hodnotu, ozveme se s&nbsp;nabídkou a&nbsp;návrhem poukazu s&nbsp;vaším logem.</p>
+    <div class="brana__akce">
+      <a class="tlacitko" href="#poukaz">Navrhnout poukaz <span class="sipka" aria-hidden="true"></span></a>
+    </div>
+    <p class="brana__kontakt">Ondřej Hejduk, obchod<br>
+      <a href="mailto:{{ site.kontakt.email }}?subject=Firemn%C3%AD%20poukazy%20DREAMRENTAL">{{ site.kontakt.email }}</a><br>
+      <a href="tel:{{ site.kontakt.telefon|replace(' ', '') }}">{{ site.kontakt.telefon }}</a></p>
+  </div>
+</section>
+{% endblock %}

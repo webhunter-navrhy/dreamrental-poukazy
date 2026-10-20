@@ -1,0 +1,10 @@
+{% extends "_base.html" %}
+{% set titulek = 'Stránka nenalezena – DREAMRENTAL' %}
+{% set noindex = true %}
+{% set cesta = '404/' %}
+{% block obsah %}
+<article class="text-stranka">
+  <h1>Tady jsme zabloudili v&nbsp;mracích</h1>
+  <p class="text-stranka__perex">Stránka neexistuje. <a class="odkaz" href="{{ url('') }}">Zpět na firemní poukazy</a></p>
+</article>
+{% endblock %}

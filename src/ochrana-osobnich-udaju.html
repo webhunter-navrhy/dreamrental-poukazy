@@ -1,0 +1,29 @@
+{% extends "_base.html" %}
+{% set titulek = 'Ochrana osobních údajů – firemní poukazy DREAMRENTAL' %}
+{% set popis = 'Jak DREAMRENTAL (ADDICTESTATE GROUP s.r.o.) zachází s firemními kontaktními údaji při nabídce dárkových poukazů.' %}
+{% set cesta = 'ochrana-osobnich-udaju/' %}
+{% block obsah %}
+<article class="text-stranka">
+  <h1>Ochrana osobních údajů</h1>
+  <p class="text-stranka__perex">Jak zacházíme s&nbsp;údaji, když vám napíšeme s&nbsp;nabídkou firemních poukazů.</p>
+  <h2>Kdo údaje zpracovává</h2>
+  <p>{{ site.firma }} (DREAMRENTAL), IČO {{ site.ico }}, {{ site.sidlo }}. Kontakt pro vše, co se týká osobních údajů: <a href="mailto:{{ site.kontakt.email_obchod }}">{{ site.kontakt.email_obchod }}</a>.</p>
+  <h2>Jaké údaje a&nbsp;odkud</h2>
+  <p>Pracujeme jen s&nbsp;firemními kontaktními údaji: název firmy, pracovní e-mailová adresa a&nbsp;jméno statutárního zástupce. Získáváme je z&nbsp;veřejných rejstříků a&nbsp;z&nbsp;webových stránek firem.</p>
+  <h2>Proč a&nbsp;na jakém základě</h2>
+  <p>Abychom firmám mohli nabídnout dárkové poukazy DREAMRENTAL. Právním základem je náš oprávněný zájem oslovit firmy s&nbsp;nabídkou, která souvisí s&nbsp;jejich podnikáním (čl. 6 odst. 1 písm. f) GDPR).</p>
+  <h2>Když nechcete, abychom psali</h2>
+  <p>Stačí odpovědět na náš e-mail slovem „ne“, nebo napsat na <a href="mailto:{{ site.kontakt.email_obchod }}">{{ site.kontakt.email_obchod }}</a>. Vaši adresu pak vyřadíme a&nbsp;nic dalšího vám nepošleme. Ponecháme si ji jen na seznamu vyřazených, abychom vám omylem nenapsali znovu.</p>
+  <h2>Jak dlouho údaje držíme</h2>
+  <p>Po dobu trvání nabídky, nejdéle 2&nbsp;roky od posledního kontaktu. Pak je smažeme.</p>
+  <h2>Kdo údaje může vidět</h2>
+  <p>Resend (rozesílání e-mailů) a&nbsp;GitHub (provoz těchto stránek). Údaje nikomu neprodáváme ani nepředáváme pro jejich vlastní marketing.</p>
+  <h2>Náhled poukazu</h2>
+  <p>Název firmy, věnování a&nbsp;logo, které zadáte do náhledu poukazu, zůstávají jen ve vašem prohlížeči. K&nbsp;nám se dostanou teprve tehdy, když nám sami pošlete e-mail s&nbsp;poptávkou.</p>
+  <h2>Vaše práva</h2>
+  <p>Můžete požádat o&nbsp;přístup k&nbsp;údajům, jejich opravu nebo výmaz, omezení zpracování a&nbsp;vznést námitku. Stížnost můžete podat u&nbsp;Úřadu pro ochranu osobních údajů (<a href="https://uoou.gov.cz">uoou.gov.cz</a>).</p>
+  <h2>Cookies</h2>
+  <p>Tato stránka nepoužívá žádné cookies a&nbsp;nesleduje vás. Písma načítáme z&nbsp;vlastního serveru, ne od Googlu.</p>
+  <p><a class="odkaz" href="{{ url('') }}">Zpět na nabídku poukazů</a></p>
+</article>
+{% endblock %}
