@@ -23,11 +23,11 @@
 {% block head %}{% endblock %}
 {% if jsonld %}<script type="application/ld+json">{{ jsonld|safe }}</script>{% endif %}
 </head>
-<body>
+<body{% if cesta == '' %} class="noc"{% endif %}>
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
 <header class="hlavicka">
   <div class="hlavicka__in">
-    <a href="{{ url('') }}" class="logo"><img src="{{ base }}{{ site.logo }}" alt="{{ site.znacka }}" width="160" height="48"></a>
+    <a href="{{ url('') }}" class="logo"><img class="logo__tmave" src="{{ base }}{{ site.logo }}" alt="{{ site.znacka }}" width="160" height="48"><img class="logo__bile" src="{{ base }}logo-bila.svg" alt="" width="160" height="48"></a>
     <nav class="menu" aria-label="Hlavní">
       {% for n in site.nav %}<a href="{{ n.href if cesta == '' else url('') ~ n.href }}">{{ n.text }}</a>{% endfor %}
     </nav>

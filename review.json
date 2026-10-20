@@ -1,18 +1,17 @@
 {
   "znamka": 8,
   "slabiny": [
-    "Mobil 390 px: mezi sekcemi zůstávají prázdné plochy přes 150–250 px (pod pruhem výhod před „Tři dárky…“, mezi poslední kartou dárku a „Navrhněte si poukaz“, před „Od e-mailu k poukazům“ a pod recenzemi). Na šířkách ≤ 480 px snížit svislý padding sekcí na zhruba 64–80 px, aby obrazovky nepůsobily prázdně.",
-    "Sekce Dárky (PC): štítek „Nejoblíbenější“ u Cybertrucku nemá oporu v briefu. Buď doložit z dreamrental-poukazy.eu, nebo ho odstranit a nechat jen „Pro někoho výjimečného“. Pod mřížkou karet je navíc velká prázdná plocha před konfigurátorem, mezeru zmenšit zhruba na polovinu.",
-    "Hlavička a patička: logo DREAMRENTAL je v hlavičce na PC i mobilu drobné (wordmark má asi 10 px a skoro se nedá přečíst). Zvětšit ho na výšku 28–32 px. Odkazy v patičce (obchod@dreamrental.eu, Ochrana osobních údajů, dreamrental.eu) mají 39 px a velmi malé písmo, zvětšit na 14 px s cílem ≥ 44 px."
+    "Otázky (PC 1440): levý sloupec má jen nadpis „Na co se firmy ptají“ a pod ním zůstává velká prázdná plocha vedle dlouhého seznamu otázek. Pod nadpis přidat krátkou větu a odkaz na ondrej.hejduk@dreamrental.eu nebo tlačítko „Navrhnout poukaz“ se sticky pozicí. Sloupec tím nebude prázdný a přibude další místo pro konverzi.",
+    "Recenze (PC): text v kartách recenzí a podpisy se jménem a odkazem „recenze na Googlu“ jsou na PC drobné, zhruba 13 px a šedé. Text recenze zvětšit na 16 px s řádkováním 1,5 a podpis na 14 px, ať citace čtou i HR lidé bez přibližování.",
+    "Flotila (PC): karty aut mají značku a model drobným písmem dole a šipky karuselu jsou daleko vpravo, oddělené od karet. Název modelu zvětšit na 18–20 px, šipky posadit k pravému okraji řady karet a odkaz „Celá flotila s parametry na dreamrental.eu“ udělat jako výraznější textové tlačítko se šipkou."
   ],
   "zavazne": [],
   "silne": [
-    "Jasný koncept „den ve voze snů v nebi“ z vizuálu značky drží celý web pohromadě: obláčky, andílek s klíčkem, svatozáře nad auty v kartách a zlatá brána v závěrečné výzvě k objednání.",
-    "Konfigurátor poukazu má živý náhled (logo, věnování, počet kusů, cena celkem) a nabídku dobře prodává firmám. Zlatá stuha na tmavé kartě vychází z brandu, není to samoúčelný luxus.",
-    "Brand sedí: logo klienta, písmo Outfit, světlé nebe, černá tlačítka, zlaté akcenty a průhledné fotky aut z flotily.",
-    "Obsah se opírá o fakta z briefu: ceny a firemní slevy 5 %, Google 4,9/157, tři skutečné recenze s odkazy, IČO a adresa v patičce, kontakt na obchodníka v závěrečné výzvě.",
-    "QA bez přetečení na všech šířkách, data jen 0,7 MB, mobil je složený přirozeně (karty pod sebou, konfigurátor v krocích)."
+    "Koncept „vánoční dárek ve voze snů“ drží celý web: noční nebe s mráčky, andílek s klíčkem, stuhy přes karty aut, světýlka a zlatá brána v závěrečné výzvě. Všechno navazuje na 3D vizuál dreamrental.eu.",
+    "Výtky z minulého kola jsou opravené. Mezery mezi sekcemi na mobilu 390 px jsou výrazně menší a obrazovky už nepůsobí prázdně. Štítek „Nejoblíbenější“ je teď v briefu doložený z dreamrental-poukazy.eu. Logo v hlavičce je větší a čitelné. Podle QA nikde nejsou malé dotykové cíle ani přetečení na žádné ze 6 šířek.",
+    "Konfigurátor s živým náhledem poukazu (věnování, logo, počet kusů, součet s úsporou) je skutečně užitečná funkce pro firemní objednávku, ne dekorace.",
+    "Všechny ceny, slevy 5 %, recenze (4,9 ze 157, tři jmenované recenze s odkazem na Google) i podmínky odpovídají briefu. Kontakt obchodu je v závěru a CTA „Navrhnout poukaz“ je stále v hlavičce."
   ],
-  "verdikt": "odeslat – konceptem i brandem je to nadprůměrná práce a nic vymyšleného jsem nenašel, jen štítek „Nejoblíbenější“ je potřeba doložit nebo smazat. Před odesláním ještě opravit prázdné mezery na mobilu a zvětšit logo.",
-  "_hash": "25dc443eb030573af839ed47714e1061fc510ff1"
+  "verdikt": "Všechny tři výtky z minulého kola jsou opravené a nová závažná vada není, takže známka zůstává 8. Web je jednolitý a prodejní a dá se poslat klientovi. Zbývající slabiny jsou jen doladění typografie a vyplnění prázdných míst.",
+  "_hash": "db4ee4e058bb6be9fd2e05b208848f4a5adc66a4"
 }

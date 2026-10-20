@@ -1,9 +1,34 @@
 [
-  {"q": "Kdy si obdarovaný vybere termín?", "a": "Kdykoli během 12 měsíců platnosti. Termín si domluví sám přímo s námi, vy už nic neřešíte."},
-  {"q": "Jak poukazy dostaneme?", "a": "Do 3 dnů od objednávky v PDF, připravené k tisku nebo k odeslání e-mailem. V Praze je můžeme předat i osobně."},
-  {"q": "Můžeme platit na fakturu?", "a": "Ano. Fakturujeme na IČO vaší firmy, cena za poukaz je včetně DPH."},
-  {"q": "Co když chceme poukaz na částku místo konkrétního auta?", "a": "Jde to. S poukazem na částku si obdarovaný vybere kterýkoli vůz z naší pražské flotily."},
-  {"q": "Je v ceně pojištění?", "a": "Ano, pojištění je v ceně pronájmu."},
-  {"q": "Kde si obdarovaný auto převezme?", "a": "Vůz předáváme nonstop v Praze. Přistavení jinam po republice domluvíme individuálně."},
-  {"q": "Kupujeme desítky poukazů. Dá se domluvit víc?", "a": "Napište nám počet a hodnotu poukazů a připravíme nabídku na míru."}
+  {
+    "q": "Kdy si obdarovaný vybere termín?",
+    "a": "Kdykoli během 12 měsíců platnosti. Termín si domluví sám přímo s námi, vy už nic neřešíte."
+  },
+  {
+    "q": "Stihneme to do Vánoc?",
+    "a": "Poukazy připravíme do 3 dnů od objednávky. Termín jízdy si pak obdarovaný vybere kdykoli během 12 měsíců."
+  },
+  {
+    "q": "Jak poukazy dostaneme?",
+    "a": "Do 3 dnů v PDF, nebo osobně v Praze."
+  },
+  {
+    "q": "Můžeme platit na fakturu?",
+    "a": "Ano. Fakturujeme na IČO vaší firmy, cena za poukaz je včetně DPH."
+  },
+  {
+    "q": "Co když chceme poukaz na částku místo konkrétního auta?",
+    "a": "Jde to. S poukazem na částku si obdarovaný vybere sám, kterékoli z aut v Praze."
+  },
+  {
+    "q": "Je v ceně pojištění?",
+    "a": "Ano, auta DREAMRENTAL mají pojištění v ceně."
+  },
+  {
+    "q": "Kde si obdarovaný auto převezme?",
+    "a": "Vůz předáme v Praze nonstop, nebo ho přistavíme kamkoliv po ČR."
+  },
+  {
+    "q": "Kupujeme desítky poukazů. Dá se domluvit víc?",
+    "a": "Napište nám počet a hodnotu poukazů a připravíme nabídku na míru."
+  }
 ]

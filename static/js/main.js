@@ -16,6 +16,17 @@
     });
   }
 
+  // odpočet do Štědrého dne v štítku úvodu
+  var odpocet = document.querySelector('[data-odpocet]');
+  if (odpocet) {
+    var dnes = new Date(); dnes.setHours(0, 0, 0, 0);
+    var dni = Math.round((new Date(dnes.getFullYear(), 11, 24) - dnes) / 864e5);
+    if (dni > 0) {
+      odpocet.textContent = 'do Štědrého dne ' + (dni === 1 ? 'zbývá 1 den' : dni < 5 ? 'zbývají ' + dni + ' dny' : 'zbývá ' + dni + ' dní');
+      odpocet.hidden = false;
+    }
+  }
+
   // flotila: šipky posouvají pás o kartu
   var pas = document.querySelector('.flotila__pas');
   document.querySelectorAll('[data-posun]').forEach(function (b) {
@@ -47,7 +58,7 @@
     var d = darek();
     var castka = d.value === 'castka';
     poleCastka.hidden = !castka;
-    var hodnota = castka ? Math.max(1000, parseInt(f.castka.value, 10) || 0) : Number(d.dataset.cena);
+    var hodnota = castka ? Math.max(0, parseInt(f.castka.value, 10) || 0) : Number(d.dataset.cena);
     var nazev = castka ? 'Poukaz na ' + kc(hodnota) : d.dataset.nazev;
     k('nazev').textContent = nazev;
     k('firma').textContent = f.firma.value.trim() || 'vaší firmy';

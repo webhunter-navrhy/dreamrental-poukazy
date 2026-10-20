@@ -7,18 +7,22 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for o in data.otazky %}{"@type":"Question","name":{{ o.q|tojson }},"acceptedAnswer":{"@type":"Answer","text":{{ o.a|tojson }}}}{% if not loop.last %},{% endif %}{% endfor %}]}</script>
 {% endblock %}
 {% block obsah %}
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="bz" cx=".35" cy=".3"><stop offset="0" stop-color="#f6dc9a"/><stop offset=".6" stop-color="#c99a3e"/><stop offset="1" stop-color="#8a6420"/></radialGradient><radialGradient id="bc" cx=".35" cy=".3"><stop offset="0" stop-color="#e0566a"/><stop offset=".6" stop-color="#a8243a"/><stop offset="1" stop-color="#6e1224"/></radialGradient><radialGradient id="bm" cx=".35" cy=".3"><stop offset="0" stop-color="#9fb4e6"/><stop offset=".6" stop-color="#3d5596"/><stop offset="1" stop-color="#1d2a52"/></radialGradient><linearGradient id="cv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d8465a"/><stop offset=".55" stop-color="#a8243a"/><stop offset="1" stop-color="#7a1428"/></linearGradient></defs><symbol id="masle" viewBox="0 0 120 70"><path d="M60 36C44 10 14 4 10 18s20 22 50 18z" fill="url(#cv)"/><path d="M60 36C76 10 106 4 110 18S90 40 60 36z" fill="url(#cv)"/><path d="M57 38 40 68l9-2 6 4 5-30zM63 38l17 30-9-2-6 4-5-30z" fill="url(#cv)" opacity=".92"/><ellipse cx="60" cy="36" rx="9" ry="8" fill="#c23246"/></symbol></svg>
 
 <!-- ÚVOD: nebe Dreamrentalu, dárek na mráčku, andílek nese klíček -->
 <section class="uvod">
   <div class="nebe" aria-hidden="true">
+    <span class="hvezdicky"></span>
     <img class="nebe__slunce" src="{{ img_url('scena/slunce.webp', 640) }}" alt="" width="440" height="440">
     <img class="mrak mrak--a" src="{{ img_url('scena/mrak-1.webp', 640) }}" alt="" width="703" height="414">
     <img class="mrak mrak--b" src="{{ img_url('scena/mrak-3.webp', 640) }}" alt="" width="553" height="311">
     <img class="mrak mrak--c" src="{{ img_url('scena/mrak-2.webp', 640) }}" alt="" width="247" height="156">
+    <span class="snih"></span><span class="snih snih--blizko"></span>
   </div>
+  {% include "_svetylka.html" %}
   <div class="uvod__in">
     <div class="uvod__text">
-      <p class="stitek"><span class="stitek__hvezda" aria-hidden="true"></span>Firemní dárky na Vánoce 2026</p>
+      <p class="stitek"><span class="stitek__hvezda" aria-hidden="true"></span>Firemní dárky na Vánoce 2026<span class="stitek__odpocet" data-odpocet hidden></span></p>
       <h1>Dejte týmu k&nbsp;Vánocům den ve&nbsp;voze snů.</h1>
       <p class="uvod__perex">Dárkové poukazy DREAMRENTAL s&nbsp;logem a&nbsp;věnováním vaší firmy. Tesla Cybertruck, BMW&nbsp;M2 nebo Mercedes-AMG na celý den, na fakturu a&nbsp;s&nbsp;platností 12&nbsp;měsíců.</p>
       <div class="uvod__akce">
@@ -33,8 +37,13 @@
     </div>
     <div class="uvod__scena">
       <img class="uvod__andel" src="{{ img_url('scena/andel.webp', 640) }}" alt="" width="561" height="640">
-      {{ img('scena/darek-na-mraku.webp', 'Černý dárek se zlatou stuhou a červené sportovní auto na mráčku', sizes='(min-width: 64rem) 52vw, 100vw', cls='uvod__darek') }}
+      {{ img('scena/darek-vanoce.webp', 'Zasněžený černý dárek se zlatou mašlí a zimostrázem a červené sportovní auto na mráčku', sizes='(min-width: 64rem) 52vw, 100vw', cls='uvod__darek') }}
     </div>
+  </div>
+  <div class="uvod__mraky" aria-hidden="true">
+    <img src="{{ img_url('scena/mrak-1.webp', 640) }}" alt="" width="703" height="414">
+    <img src="{{ img_url('scena/mrak-3.webp', 640) }}" alt="" width="553" height="311">
+    <img src="{{ img_url('scena/mrak-1.webp', 640) }}" alt="" width="703" height="414">
   </div>
   <ul class="vyhody" role="list">
     <li>Vaše logo a&nbsp;věnování</li>
@@ -47,13 +56,15 @@
 <!-- TŘI DÁRKY -->
 <section class="darky" id="darky">
   <div class="sekce__hlava">
-    <h2>Tři dárky podle toho, komu je dáváte</h2>
-    <p>Ceny jsou konečné, za jeden poukaz včetně DPH. Firmy mají 5&nbsp;% dolů.</p>
+    <h2>Tři dárky pod stromeček</h2>
+    <p>Podle toho, komu je dáváte. Ceny jsou konečné, za jeden poukaz včetně DPH, firmy mají 5&nbsp;% dolů. Poukaz platí 12&nbsp;měsíců, termín si obdarovaný domluví sám.</p>
   </div>
   <div class="darky__mrizka">
     {% for d in data.darky %}
     <article class="darek{% if d.hlavni %} darek--hlavni{% endif %}">
       <div class="darek__foto">
+        <span class="darek__snih" aria-hidden="true"></span>
+        <svg class="darek__masle" viewBox="0 0 120 70" width="120" height="70" aria-hidden="true"><use href="#masle"/></svg>
         <div class="darek__obal">
           <span class="svatozar" aria-hidden="true"></span>
           {{ img(d.foto, d.alt, sizes='(min-width: 64rem) 40vw, 90vw', cls='darek__auto') }}
@@ -77,14 +88,16 @@
 
 <!-- KONFIGURÁTOR: poukaz se balí naživo -->
 <section class="poukaz" id="poukaz">
+  <div class="banky" aria-hidden="true"><span class="banka" style="left:5%"><svg viewBox="0 0 40 112"><line x1="20" y1="0" x2="20" y2="60" stroke="#c9b27a" stroke-width="1"/><rect x="15" y="60" width="10" height="6" rx="1.5" fill="#c99a3e"/><circle cx="20" cy="84" r="18" fill="url(#bc)"/><ellipse cx="13" cy="76" rx="4" ry="6" fill="#fff" opacity=".35"/></svg></span><span class="banka" style="left:9%"><svg viewBox="0 0 40 72"><line x1="20" y1="0" x2="20" y2="20" stroke="#c9b27a" stroke-width="1"/><rect x="15" y="20" width="10" height="6" rx="1.5" fill="#c99a3e"/><circle cx="20" cy="44" r="18" fill="url(#bz)"/><ellipse cx="13" cy="36" rx="4" ry="6" fill="#fff" opacity=".35"/></svg></span><span class="banka" style="left:92%"><svg viewBox="0 0 40 92"><line x1="20" y1="0" x2="20" y2="40" stroke="#c9b27a" stroke-width="1"/><rect x="15" y="40" width="10" height="6" rx="1.5" fill="#c99a3e"/><circle cx="20" cy="64" r="18" fill="url(#bz)"/><ellipse cx="13" cy="56" rx="4" ry="6" fill="#fff" opacity=".35"/></svg></span></div>
   <div class="sekce__hlava sekce__hlava--vlevo">
-    <h2>Navrhněte si poukaz. Hned uvidíte, jak bude vypadat.</h2>
+    <h2>Zabalte si poukaz. Hned uvidíte, jak bude vypadat.</h2>
     <p>Napište název firmy a&nbsp;věnování, přidejte logo. Spočítáme cenu a&nbsp;poptávku vám připravíme do e-mailu.</p>
   </div>
   <div class="poukaz__in">
     <div class="poukaz__nahled">
       <div class="karta" id="karta" aria-live="polite">
         <div class="karta__obsah">
+          <span class="karta__snih" aria-hidden="true"></span>
           <img class="karta__logo" src="{{ base }}logo-bila.svg" alt="DREAMRENTAL" width="120" height="36">
           <p class="karta__typ">Dárkový poukaz · Vánoce 2026</p>
           <p class="karta__nazev" data-k="nazev">Den s&nbsp;Teslou Cybertruck</p>
@@ -118,7 +131,7 @@
           <label class="volba"><input type="radio" name="darek" value="castka" data-nazev="Poukaz na jízdu snů" data-foto="{{ img_url('auta/porsche-gt4-mr.webp', 640) }}"><span><b>Na částku</b><small>vyberou si sami</small></span></label>
         </div>
         <label class="pole__castka" hidden>Hodnota jednoho poukazu
-          <span class="vstup vstup--kc"><input type="number" name="castka" min="1000" step="500" value="5000" inputmode="numeric"><i>Kč</i></span>
+          <span class="vstup vstup--kc"><input type="number" name="castka" min="1" step="500" value="5000" inputmode="numeric"><i>Kč</i></span>
         </label>
       </fieldset>
 
@@ -164,15 +177,15 @@
 <!-- JAK TO PROBÍHÁ: nebeská cesta -->
 <section class="postup" id="postup">
   <div class="postup__obraz">
-    {{ img('scena/cesta.webp', 'Bílé auto jede po cestě z mráčků vstříc slunci', sizes='100vw') }}
+    {{ img('scena/cesta-vanoce.webp', 'Bílé auto jede v zimním večeru po zasněžené cestě z mráčků', sizes='100vw') }}
     <div class="postup__nadpis">
-      <h2>Od e-mailu k&nbsp;poukazům za tři dny</h2>
+      <h2>Od e-mailu pod stromeček za tři dny</h2>
     </div>
   </div>
   <ol class="kroky" role="list">
-    <li><span class="kroky__den">Den 1</span><h3>Napíšete nám</h3><p>Počet poukazů a&nbsp;jejich hodnotu. Stačí poptávka z&nbsp;konfigurátoru nebo odpověď na e-mail.</p></li>
-    <li><span class="kroky__den">Den 1–2</span><h3>Pošleme nabídku</h3><p>S&nbsp;cenou a&nbsp;návrhem poukazu s&nbsp;vaším logem a&nbsp;věnováním. Fakturujeme na IČO.</p></li>
-    <li><span class="kroky__den">Do 3&nbsp;dnů</span><h3>Dodáme poukazy</h3><p>V&nbsp;PDF k&nbsp;tisku nebo k&nbsp;odeslání. V&nbsp;Praze je předáme i&nbsp;osobně.</p></li>
+    <li><span class="kroky__den">1</span><h3>Napíšete nám</h3><p>Počet poukazů a&nbsp;jejich hodnotu. Stačí poptávka z&nbsp;konfigurátoru nebo odpověď na e-mail.</p></li>
+    <li><span class="kroky__den">2</span><h3>Pošleme nabídku</h3><p>S&nbsp;cenou a&nbsp;návrhem poukazu s&nbsp;vaším logem. Fakturujeme na IČO.</p></li>
+    <li><span class="kroky__den">3 · hotovo do 3&nbsp;dnů</span><h3>Dodáme poukazy</h3><p>V&nbsp;PDF, nebo osobně v&nbsp;Praze.</p></li>
   </ol>
 </section>
 
@@ -181,7 +194,7 @@
   <div class="sekce__hlava sekce__hlava--radek">
     <div>
       <h2>Poukaz na částku? Vybere si z&nbsp;celé flotily.</h2>
-      <p>Obdarovaný si sám zvolí auto i&nbsp;den. Pojištění je v&nbsp;ceně, vůz předáváme nonstop v&nbsp;Praze.</p>
+      <p>S&nbsp;poukazem na částku si obdarovaný vybere sám, kterékoli auto v&nbsp;Praze. Pojištění je v&nbsp;ceně. Vůz předáme v&nbsp;Praze nonstop, nebo ho přistavíme kamkoliv po ČR.</p>
     </div>
     <div class="flotila__sipky">
       <button type="button" data-posun="-1" aria-label="Předchozí auta"><span class="sipka sipka--zpet" aria-hidden="true"></span></button>
@@ -223,8 +236,13 @@
 
 <!-- OTÁZKY -->
 <section class="otazky" id="otazky">
+  <div class="banky" aria-hidden="true"><span class="banka" style="left:4%"><svg viewBox="0 0 40 82"><line x1="20" y1="0" x2="20" y2="30" stroke="#c9b27a" stroke-width="1"/><rect x="15" y="30" width="10" height="6" rx="1.5" fill="#c99a3e"/><circle cx="20" cy="54" r="18" fill="url(#bz)"/><ellipse cx="13" cy="46" rx="4" ry="6" fill="#fff" opacity=".35"/></svg></span><span class="banka" style="left:94%"><svg viewBox="0 0 40 122"><line x1="20" y1="0" x2="20" y2="70" stroke="#c9b27a" stroke-width="1"/><rect x="15" y="70" width="10" height="6" rx="1.5" fill="#c99a3e"/><circle cx="20" cy="94" r="18" fill="url(#bc)"/><ellipse cx="13" cy="86" rx="4" ry="6" fill="#fff" opacity=".35"/></svg></span></div>
   <div class="otazky__in">
-    <h2>Na co se firmy ptají</h2>
+    <div class="otazky__hlava">
+      <h2>Na co se firmy ptají</h2>
+      <p>Nenašli jste odpověď? Napište na <a href="mailto:{{ site.kontakt.email }}">{{ site.kontakt.email }}</a>, nebo si rovnou navrhněte poukaz.</p>
+      <a class="tlacitko" href="#poukaz">Navrhnout poukaz <span class="sipka" aria-hidden="true"></span></a>
+    </div>
     <div class="otazky__seznam">
       {% for o in data.otazky %}
       <details{% if loop.first %} open{% endif %}>
@@ -238,16 +256,16 @@
 
 <!-- ZLATÁ BRÁNA -->
 <section class="brana" id="kontakt">
-  {{ img('scena/brana.webp', 'Červené sportovní auto projíždí zlatou bránou na mráčku, kolem létají andílci', sizes='100vw', cls='brana__obraz') }}
+  {{ img('scena/brana-vanoce.webp', 'Červené sportovní auto projíždí zlatou bránou na zasněženém mráčku, andílci nesou vánoční ozdoby', sizes='100vw', cls='brana__obraz') }}
+  <span class="snih" aria-hidden="true"></span>
   <div class="brana__text">
-    <h2>Brána je otevřená. Kolik poukazů chystáte?</h2>
+    <h2>Připravíme poukazy pro váš tým</h2>
     <p>Napište počet a&nbsp;hodnotu, ozveme se s&nbsp;nabídkou a&nbsp;návrhem poukazu s&nbsp;vaším logem.</p>
     <div class="brana__akce">
       <a class="tlacitko" href="#poukaz">Navrhnout poukaz <span class="sipka" aria-hidden="true"></span></a>
     </div>
-    <p class="brana__kontakt">Ondřej Hejduk, obchod<br>
-      <a href="mailto:{{ site.kontakt.email }}?subject=Firemn%C3%AD%20poukazy%20DREAMRENTAL">{{ site.kontakt.email }}</a><br>
-      <a href="tel:{{ site.kontakt.telefon|replace(' ', '') }}">{{ site.kontakt.telefon }}</a></p>
+    <p class="brana__kontakt">Nebo napište na <a href="mailto:{{ site.kontakt.email }}?subject=Firemn%C3%AD%20poukazy%20DREAMRENTAL">{{ site.kontakt.email }}</a><br>
+      Obchodní oddělení <a href="tel:{{ site.kontakt.telefon|replace(' ', '') }}">{{ site.kontakt.telefon }}</a></p>
   </div>
 </section>
 {% endblock %}
