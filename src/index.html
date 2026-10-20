@@ -63,10 +63,10 @@
     {% for d in data.darky %}
     <article class="darek{% if d.hlavni %} darek--hlavni{% endif %}">
       <div class="darek__foto">
-        {{ img('scena/atelier.webp', '', sizes='(min-width: 64rem) 46vw, 100vw', cls='darek__pozadi') }}
+        {{ img('scena/atelier.webp', '', sizes='(min-width: 40rem) 40vw, 80vw', cls='darek__pozadi') }}
         <span class="darek__snih" aria-hidden="true"></span>
         <div class="darek__obal">
-          {{ img(d.foto, d.alt, sizes='(min-width: 64rem) 40vw, 90vw', cls='darek__auto') }}
+          {{ img(d.foto, d.alt, sizes=('(min-width: 64rem) 40vw, 80vw' if d.hlavni else '(min-width: 64rem) 25vw, (min-width: 40rem) 33vw, 80vw'), cls='darek__auto') }}
         </div>
         {% if d.hlavni %}<span class="darek__odznak">Nejoblíbenější</span>{% endif %}
       </div>
@@ -115,7 +115,7 @@
             <span data-k="logo-text">Vaše logo</span>
           </div>
         </div>
-        <img class="karta__auto" data-k="foto" src="{{ img_url('auta/tesla-cybertruck.webp', 640) }}" alt="" width="640" height="344">
+        <img class="karta__auto" data-k="foto" src="{{ img_url('auta/tesla-cybertruck.webp', 800) }}" alt="" width="640" height="344">
       </div>
       <p class="poukaz__pozn">Ukázka. Finální podobu poukazu s&nbsp;vaším logem pošleme v&nbsp;nabídce.</p>
     </div>
@@ -125,9 +125,9 @@
         <legend>1. Který dárek</legend>
         <div class="volby">
           {% for d in data.darky %}
-          <label class="volba"><input type="radio" name="darek" value="{{ d.id }}" data-nazev="{{ d.nazev }}" data-cena="{{ d.firmy }}" data-bezne="{{ d.bezne }}" data-foto="{{ img_url(d.foto, 640) }}"{% if d.hlavni %} checked{% endif %}><span><b>{{ d.kratce }}</b><small>{{ kc(d.firmy) }}</small></span></label>
+          <label class="volba"><input type="radio" name="darek" value="{{ d.id }}" data-nazev="{{ d.nazev }}" data-cena="{{ d.firmy }}" data-bezne="{{ d.bezne }}" data-foto="{{ img_url(d.foto, 800) }}"{% if d.hlavni %} checked{% endif %}><span><b>{{ d.kratce }}</b><small>{{ kc(d.firmy) }}</small></span></label>
           {% endfor %}
-          <label class="volba"><input type="radio" name="darek" value="castka" data-nazev="Poukaz na jízdu snů" data-foto="{{ img_url('auta/porsche-gt4-mr.webp', 640) }}"><span><b>Na částku</b><small>vyberou si sami</small></span></label>
+          <label class="volba"><input type="radio" name="darek" value="castka" data-nazev="Poukaz na jízdu snů" data-foto="{{ img_url('auta/porsche-gt4-mr.webp', 800) }}"><span><b>Na částku</b><small>vyberou si sami</small></span></label>
         </div>
         <label class="pole__castka" hidden>Hodnota jednoho poukazu
           <span class="vstup vstup--kc"><input type="number" name="castka" min="1" step="500" value="5000" inputmode="numeric"><i>Kč</i></span>
@@ -194,21 +194,21 @@
       <h2>Poukaz na částku? Vybere si z&nbsp;celé flotily.</h2>
       <p>S&nbsp;poukazem na částku si obdarovaný vybere sám, kterékoli auto v&nbsp;Praze. Pojištění je v&nbsp;ceně. Vůz předáme v&nbsp;Praze nonstop, nebo ho přistavíme kamkoliv po ČR.</p>
     </div>
+      <div class="flotila__sipky">
+      <button type="button" data-posun="-1" aria-label="Předchozí auta"><span class="sipka sipka--zpet" aria-hidden="true"></span></button>
+      <button type="button" data-posun="1" aria-label="Další auta"><span class="sipka" aria-hidden="true"></span></button>
+    </div>
   </div>
   <ul class="flotila__pas" role="list" tabindex="0" aria-label="Auta ve flotile">
     {% for a in data.flotila %}
     <li class="auto">
-      <div class="auto__foto">{{ img(a.foto, a.znacka ~ ' ' ~ a.model, sizes='(min-width: 64rem) 26rem, 72vw') }}</div>
+      <div class="auto__foto">{{ img(a.foto, a.znacka ~ ' ' ~ a.model, sizes='(min-width: 64rem) 21rem, 72vw') }}</div>
       <p><small>{{ a.znacka }}</small>{{ a.model }}</p>
     </li>
     {% endfor %}
   </ul>
   <div class="flotila__pata">
     <a class="tlacitko tlacitko--obrys" href="https://dreamrental.eu/auta/">Celá flotila s&nbsp;parametry na dreamrental.eu <span class="sipka" aria-hidden="true"></span></a>
-    <div class="flotila__sipky">
-      <button type="button" data-posun="-1" aria-label="Předchozí auta"><span class="sipka sipka--zpet" aria-hidden="true"></span></button>
-      <button type="button" data-posun="1" aria-label="Další auta"><span class="sipka" aria-hidden="true"></span></button>
-    </div>
   </div>
 </section>
 

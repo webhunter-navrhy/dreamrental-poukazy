@@ -17,8 +17,8 @@
 {% if og_url %}<meta property="og:image" content="{{ og_url }}">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">{% endif %}
-<link rel="preload" href="{{ base }}fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{{ base }}fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ base }}fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ base }}fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 {% block head %}{% endblock %}
 {% if jsonld %}<script type="application/ld+json">{{ jsonld|safe }}</script>{% endif %}
@@ -39,7 +39,7 @@
 </main>
 <footer class="paticka">
   <div class="paticka__in">
-    <img src="{{ base }}{{ site.logo }}" alt="{{ site.znacka }}" width="140" height="42" loading="lazy">
+    <img src="{{ base }}logo-bila.svg" alt="{{ site.znacka }}" width="140" height="42" loading="lazy">
     <p>{{ site.znacka }} · {{ site.firma }}, IČO {{ site.ico }}, {{ site.sidlo }}</p>
     <p class="paticka__odkazy">
       <a href="mailto:{{ site.kontakt.email_obchod }}">{{ site.kontakt.email_obchod }}</a>

@@ -16,6 +16,15 @@
     });
   }
 
+  // líně načítané fotky se objeví plynule, ne skokem
+  document.querySelectorAll('img[loading="lazy"]').forEach(function (im) {
+    if (im.complete) return;
+    im.classList.add('ceka');
+    var hotovo = function () { im.classList.remove('ceka'); };
+    im.addEventListener('load', hotovo, { once: true });
+    im.addEventListener('error', hotovo, { once: true });
+  });
+
   // odpočet do Štědrého dne v štítku úvodu
   var odpocet = document.querySelector('[data-odpocet]');
   if (odpocet) {

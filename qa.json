@@ -32,16 +32,16 @@
         "pocet_pretekajicich": 0
       }
     },
-    "preneseno_PC_MB": 0.76,
+    "preneseno_PC_MB": 0.54,
     "nejvetsi_obrazek_PC": {
-      "kB": 81,
-      "url": "http://localhost:8790/dreamrental-poukazy/img/scena-brana-vyrez-1008.webp"
+      "kB": 67,
+      "url": "http://localhost:8790/dreamrental-poukazy/img/scena-brana-vyrez-800.webp"
     },
     "snimku_PC": 11,
-    "preneseno_mobil_MB": 0.86,
+    "preneseno_mobil_MB": 0.61,
     "nejvetsi_obrazek_mobil": {
-      "kB": 81,
-      "url": "http://localhost:8790/dreamrental-poukazy/img/auta-mercedes-amg-gt-63s-1185.webp"
+      "kB": 67,
+      "url": "http://localhost:8790/dreamrental-poukazy/img/scena-brana-vyrez-800.webp"
     },
     "snimku_mobil": 13,
     "seo": {
@@ -65,7 +65,7 @@
     "font_text": "Outfit",
     "podstranky": {
       "stranek": 2,
-      "obrazku": 50
+      "obrazku": 71
     }
   }
 }

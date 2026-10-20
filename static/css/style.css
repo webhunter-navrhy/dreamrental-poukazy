@@ -1,9 +1,8 @@
 /* DREAMRENTAL – firemní vánoční poukazy. Koncept „Štědrý večer nad mraky“: noční nebe a sníh,
    3D scény z brandu dreamrental.eu, vánoční červená a zlatá z původního webu poukazů, na konci zlatá brána. */
-@font-face{font-family:"Outfit";src:url(../fonts/outfit-latin.woff2) format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:"Outfit";src:url(../fonts/outfit-latin-ext.woff2) format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:"Inter";src:url(../fonts/inter-latin.woff2) format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:"Inter";src:url(../fonts/inter-latin-ext.woff2) format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+/* písma zúžená na češtinu a slovenštinu a na použité řezy (Outfit 300–500, Inter 400–600) */
+@font-face{font-family:"Outfit";src:url(../fonts/outfit.woff2) format("woff2");font-weight:300 500;font-display:swap}
+@font-face{font-family:"Inter";src:url(../fonts/inter.woff2) format("woff2");font-weight:400 600;font-display:swap}
 
 
 :root{
@@ -12,11 +11,13 @@
   --nebe-2:#d5e3f7;
   --nebe-3:#c4d6f1;
   --bila:#ffffff;
-  --perlet:#f7f9fd;
+  --perlet:#fffdf8;
+  --krem:#f8f3ea;         /* teplý sníh pod mraky */
+  --krem-2:#f1e8d8;       /* balicí papír */
   --ink:#0f1218;          /* černá tlačítka brandu */
-  --ink-2:#4a5263;
-  --ink-3:#6b7385;
-  --linka:#dfe6f1;
+  --ink-2:#4c4a47;
+  --ink-3:#736d66;
+  --linka:#e6dccb;
   --zlato:#c99a3e;        /* stuha a svatozář */
   --zlato-2:#e8c77a;
   --zlato-t:#8a6420;      /* zlato pro text (kontrast) */
@@ -39,7 +40,7 @@
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:5.5rem;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bila);color:var(--ink);font:400 1.0625rem/1.65 var(--f-t);-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{margin:0;background:var(--krem);color:var(--ink);font:400 1.0625rem/1.65 var(--f-t);-webkit-font-smoothing:antialiased;overflow-x:clip}
 img{max-width:100%;height:auto;display:block}
 h1,h2,h3{font-family:var(--f-d);font-weight:400;letter-spacing:-.025em;line-height:1.04;margin:0;text-wrap:balance}
 h2{font-size:clamp(2.1rem,1.3rem + 3vw,3.6rem)}
@@ -51,6 +52,7 @@ button{font:inherit;color:inherit}
 .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:.6rem 1rem;z-index:100}
 .skip:focus{left:1rem;top:1rem}
 .hvezdy{color:#f2b416;letter-spacing:.08em}
+b,strong{font-weight:600}
 
 /* tlačítka – černá pilulka se šipkou v kroužku jako na dreamrental.eu */
 .tlacitko{display:inline-flex;white-space:nowrap;align-items:center;gap:.85rem;min-height:3.25rem;padding:.5rem .55rem .5rem 1.4rem;border-radius:999px;background:var(--ink);color:#fff;font:500 1.0625rem/1 var(--f-d);text-decoration:none;border:0;cursor:pointer;transition:transform .25s ease,background .25s ease}
@@ -76,7 +78,7 @@ button{font:inherit;color:inherit}
 
 /* HLAVIČKA */
 .hlavicka{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s,backdrop-filter .3s}
-.hlavicka.je-scroll{background:rgba(255,255,255,.82);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 1px 0 rgba(15,18,24,.06)}
+.hlavicka.je-scroll{background:rgba(248,243,234,.86);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 1px 0 rgba(15,18,24,.06)}
 .hlavicka__in{max-width:calc(var(--max) + 2*var(--okraj));margin:0 auto;padding:.85rem var(--okraj);display:flex;align-items:center;gap:2rem}
 .logo{display:flex;align-items:center;min-height:44px;flex:none}
 .logo img{height:54px;width:auto}
@@ -123,8 +125,8 @@ button{font:inherit;color:inherit}
 .zarovka ellipse{filter:drop-shadow(0 0 5px var(--c));animation:zarovka 2.4s ease-in-out infinite;animation-delay:var(--z)}
 @keyframes zarovka{0%,100%{opacity:1}50%{opacity:.55}}
 .uvod__mraky{position:relative;z-index:1;display:flex;justify-content:center;align-items:flex-end;margin:clamp(1.5rem,3vw,2.5rem) calc(var(--okraj) * -1 - 6%) 0;pointer-events:none}
-.uvod__mraky::after{content:"";position:absolute;left:0;right:0;bottom:0;height:36%;background:#fff}
-.uvod__mraky::before{content:"";position:absolute;z-index:2;left:0;right:0;bottom:0;height:42%;background:linear-gradient(180deg,rgba(255,255,255,0),#fff 80%)}
+.uvod__mraky::after{content:"";position:absolute;left:0;right:0;bottom:0;height:36%;background:var(--krem)}
+.uvod__mraky::before{content:"";position:absolute;z-index:2;left:0;right:0;bottom:0;height:42%;background:linear-gradient(180deg,rgba(248,243,234,0),var(--krem) 80%)}
 .uvod__mraky img{position:relative;z-index:1;flex:none;width:clamp(260px,26vw,430px);height:auto;margin:0 -4.5% -1px;filter:drop-shadow(0 -10px 30px rgba(10,16,40,.25))}
 .uvod__mraky img:nth-child(even){width:clamp(200px,20vw,340px);margin-bottom:clamp(2rem,4vw,3.5rem);transform:scaleX(-1)}
 .uvod__mraky img:nth-child(3){width:clamp(300px,30vw,500px)}
@@ -166,14 +168,16 @@ button{font:inherit;color:inherit}
 /* TŘI DÁRKY */
 .darky{padding:calc(var(--sekce) * .5) var(--okraj) calc(var(--sekce) * .55);max-width:calc(var(--max) + 2*var(--okraj));margin:0 auto}
 .darky__mrizka{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:1.25rem}
-.darek{position:relative;display:flex;flex-direction:column;background:var(--bila);border-radius:var(--r);overflow:hidden;box-shadow:0 0 0 1px var(--linka);transition:box-shadow .4s,transform .4s cubic-bezier(.2,.8,.2,1)}
-.darek:hover{box-shadow:0 0 0 1px #cbd6e8,0 30px 60px -30px rgba(18,26,51,.45);transform:translateY(-3px)}
+.darek{position:relative;display:flex;flex-direction:column;background:#0d1430;color:#fff;border-radius:26px;overflow:hidden;isolation:isolate;box-shadow:0 0 0 1px rgba(232,199,122,.16) inset,0 40px 70px -40px rgba(13,20,48,.6);transition:box-shadow .4s,transform .5s cubic-bezier(.2,.8,.2,1)}
+.darek:hover{box-shadow:0 0 0 1px rgba(232,199,122,.4) inset,0 50px 80px -40px rgba(13,20,48,.7);transform:translateY(-4px)}
+/* teplé světlo výlohy nad autem */
+.darek::before{content:"";position:absolute;left:50%;top:-30%;width:120%;height:70%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,200,120,.22),transparent);pointer-events:none;z-index:1}
 .darek--hlavni{grid-row:span 2}
 .darek__foto{position:relative;display:grid;place-items:end center;padding:3rem 1.5rem 9%;min-height:15rem;background:var(--noc);isolation:isolate;overflow:hidden}
 .darek--hlavni .darek__foto{flex:1;padding:4rem 2rem 10%}
-.darek__pozadi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%;z-index:-2;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.darek__pozadi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%;z-index:-2;transition:transform 1.2s cubic-bezier(.2,.8,.2,1),opacity .6s ease}
 .darek:hover .darek__pozadi{transform:scale(1.04)}
-.darek__foto::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,17,41,.35),transparent 40%)}
+.darek__foto::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,17,41,.35),transparent 40%,transparent 72%,rgba(13,20,48,.55) 92%,#0d1430)}
 .darek__snih{position:absolute;inset:0;pointer-events:none;z-index:2;background-image:
   radial-gradient(1.8px 1.8px at 30px 40px,rgba(255,255,255,.8) 50%,transparent 52%),radial-gradient(1.3px 1.3px at 120px 110px,rgba(255,255,255,.7) 50%,transparent 52%),
   radial-gradient(2px 2px at 210px 60px,rgba(255,255,255,.75) 50%,transparent 52%),radial-gradient(1.4px 1.4px at 80px 180px,rgba(255,255,255,.6) 50%,transparent 52%),
@@ -183,28 +187,33 @@ button{font:inherit;color:inherit}
 .darek--hlavni .darek__obal{width:92%;max-width:680px}
 /* kontaktní stín pod koly, auto stojí na sněhu */
 .darek__obal::after{content:"";position:absolute;left:6%;right:6%;bottom:-2%;height:12%;border-radius:50%;background:radial-gradient(closest-side,rgba(6,10,25,.55),rgba(6,10,25,.18) 60%,transparent);filter:blur(4px);z-index:-1}
-.darek__auto{position:relative;width:100%;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.darek__auto{position:relative;width:100%;transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .6s ease}
 .darek:hover .darek__auto{transform:translateX(1.5%)}
 .darek__odznak{position:absolute;top:1.25rem;left:1.25rem;z-index:3;display:inline-flex;align-items:center;gap:.45rem;font:500 .85rem/1 var(--f-d);background:rgba(255,255,255,.12);border:1px solid rgba(232,199,122,.55);color:var(--zlato-2);padding:.5rem .85rem .5rem .7rem;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .darek__odznak::before{content:"";width:12px;height:12px;background:var(--zlato-2);-webkit-mask:var(--hvezda) center/contain no-repeat;mask:var(--hvezda) center/contain no-repeat}
-.darek__text{position:relative;padding:1.5rem 1.75rem 1.75rem;background:var(--bila)}
-.darek--hlavni .darek__text{padding:2rem 2.25rem 2.25rem}
-.darek__pro{font:500 .9rem/1 var(--f-d);color:var(--cervena);margin-bottom:.6rem}
+.darek__text{position:relative;z-index:2;padding:.5rem 1.75rem 1.75rem;background:#0d1430}
+.darek--hlavni .darek__text{padding:.75rem 2.25rem 2.25rem}
+.darek__pro{font:500 .9rem/1 var(--f-d);color:var(--zlato-2);margin-bottom:.6rem;letter-spacing:.01em}
 .darek--hlavni h3{font-size:clamp(1.8rem,1.3rem + 1.4vw,2.5rem);font-weight:400}
-.darek__auta{color:var(--ink-3);margin-top:.4rem;font-size:.98rem}
+.darek__auta{color:rgba(255,255,255,.62);margin-top:.4rem;font-size:.98rem}
 .darek__cena{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;margin:1.2rem 0 1.4rem}
 .darek__kc{font:400 2rem/1 var(--f-d);letter-spacing:-.02em}
 .darek--hlavni .darek__kc{font-size:2.6rem}
-.darek__bezne{color:var(--ink-3);font-size:.92rem}
+.darek__bezne{color:rgba(255,255,255,.55);font-size:.92rem}
 .darek:not(.darek--hlavni) .darek__text{display:grid;grid-template-columns:1fr auto;column-gap:1rem;align-items:end}
 .darek:not(.darek--hlavni) .darek__text > :not(.darek__cena):not(.tlacitko){grid-column:1/-1}
 .darek:not(.darek--hlavni) .darek__cena{margin:1rem 0 0}
 .darek:not(.darek--hlavni) .tlacitko{font-size:.95rem;min-height:2.9rem}
+.darek .tlacitko{background:#fff;color:var(--ink);box-shadow:none}
+.darek .tlacitko .sipka{background:var(--ink)}
+.darek .tlacitko .sipka::before{background:#fff}
+.darek .tlacitko:hover{background:var(--zlato-2);color:var(--ink)}
 
 /* KONFIGURÁTOR */
-.poukaz{padding:var(--sekce) var(--okraj);background:
-  radial-gradient(1.6px 1.6px at 40px 50px,rgba(45,63,114,.18) 50%,transparent 52%),radial-gradient(1.2px 1.2px at 170px 130px,rgba(45,63,114,.14) 50%,transparent 52%),radial-gradient(2px 2px at 260px 30px,rgba(45,63,114,.12) 50%,transparent 52%),
-  linear-gradient(180deg,#fff 0%,#eef3fb 22%,#eef3fb 100%);background-size:300px 200px,300px 200px,300px 200px,auto;position:relative;overflow-x:clip}
+.poukaz{padding:var(--sekce) var(--okraj);background:linear-gradient(180deg,var(--krem) 0%,var(--krem-2) 30%,var(--krem-2) 100%);position:relative;overflow-x:clip;isolation:isolate}
+.poukaz::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-color:#c99a3e;opacity:.13;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cpath d='M30 20c.4 3.6 2.8 6 6.4 6.4-3.6.4-6 2.8-6.4 6.4-.4-3.6-2.8-6-6.4-6.4 3.6-.4 6-2.8 6.4-6.4zM120 70c.5 4.5 3.5 7.5 8 8-4.5.5-7.5 3.5-8 8-.5-4.5-3.5-7.5-8-8 4.5-.5 7.5-3.5 8-8zM70 130c.3 2.7 2.1 4.5 4.8 4.8-2.7.3-4.5 2.1-4.8 4.8-.3-2.7-2.1-4.5-4.8-4.8 2.7-.3 4.5-2.1 4.8-4.8zM160 150c.3 2.4 1.8 3.9 4.2 4.2-2.4.3-3.9 1.8-4.2 4.2-.3-2.4-1.8-3.9-4.2-4.2 2.4-.3 3.9-1.8 4.2-4.2z'/%3E%3C/svg%3E") 0 0/180px 180px repeat;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cpath d='M30 20c.4 3.6 2.8 6 6.4 6.4-3.6.4-6 2.8-6.4 6.4-.4-3.6-2.8-6-6.4-6.4 3.6-.4 6-2.8 6.4-6.4zM120 70c.5 4.5 3.5 7.5 8 8-4.5.5-7.5 3.5-8 8-.5-4.5-3.5-7.5-8-8 4.5-.5 7.5-3.5 8-8zM70 130c.3 2.7 2.1 4.5 4.8 4.8-2.7.3-4.5 2.1-4.8 4.8-.3-2.7-2.1-4.5-4.8-4.8 2.7-.3 4.5-2.1 4.8-4.8zM160 150c.3 2.4 1.8 3.9 4.2 4.2-2.4.3-3.9 1.8-4.2 4.2-.3-2.4-1.8-3.9-4.2-4.2 2.4-.3 3.9-1.8 4.2-4.2z'/%3E%3C/svg%3E") 0 0/180px 180px repeat}
 /* zavěšené baňky jako na původním webu poukazů */
 .banky{position:absolute;top:0;left:0;right:0;height:0;pointer-events:none;z-index:2}
 .banka{position:absolute;top:0;width:clamp(26px,3vw,40px);transform-origin:50% 0;animation:houpani 5s ease-in-out infinite}
@@ -222,6 +231,10 @@ button{font:inherit;color:inherit}
   radial-gradient(120% 90% at 0% 0%,#34478a 0%,transparent 55%),
   linear-gradient(140deg,var(--noc-2) 0%,var(--noc) 70%);color:#fff;overflow:visible;display:grid;grid-template-columns:1fr 24%;box-shadow:0 2px 0 rgba(255,255,255,.06) inset,0 40px 70px -30px rgba(15,25,50,.55),0 18px 30px -18px rgba(15,25,50,.35);container-type:inline-size;transform:rotate(-1.2deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .karta:hover{transform:rotate(0)}
+/* zlatá ražba po obvodu a odlesk, který po kartě občas přejede */
+.karta::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(246,220,154,.9),rgba(201,154,62,.25) 30%,rgba(246,220,154,.7) 60%,rgba(168,122,42,.3));-webkit-mask:linear-gradient(#000,#000) content-box,linear-gradient(#000,#000);-webkit-mask-composite:xor;mask:linear-gradient(#000,#000) content-box exclude,linear-gradient(#000,#000);pointer-events:none;z-index:4}
+.karta::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.13) 45%,rgba(255,246,220,.22) 50%,rgba(255,255,255,.1) 55%,transparent 65%) -150% 0/250% 100% no-repeat;animation:odlesk 7s ease-in-out infinite 1.5s}
+@keyframes odlesk{0%,55%{background-position:-150% 0}85%,100%{background-position:250% 0}}
 .karta__snih{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background-image:radial-gradient(1.5px 1.5px at 30px 30px,rgba(255,255,255,.55) 50%,transparent 52%),radial-gradient(1.1px 1.1px at 110px 80px,rgba(255,255,255,.45) 50%,transparent 52%),radial-gradient(1.8px 1.8px at 170px 20px,rgba(255,255,255,.5) 50%,transparent 52%);background-size:200px 110px}
 .karta__obsah{position:relative;padding:7cqw 0 5.5cqw 6.5cqw;display:flex;flex-direction:column;min-width:0;z-index:1}
 .karta__logo{width:21cqw;height:auto;opacity:.95}
@@ -243,7 +256,7 @@ button{font:inherit;color:inherit}
 .karta__auto.je-zmena{opacity:0;transform:translateY(-10px)}
 
 .formular{display:grid;gap:1.25rem}
-.pole{margin:0;padding:1.5rem;border:0;border-radius:var(--r);background:rgba(255,255,255,.75);box-shadow:var(--stin);display:grid;gap:1rem;min-width:0}
+.pole{margin:0;padding:1.5rem;border:0;border-radius:var(--r);background:#fffdf9;box-shadow:0 1px 2px rgba(60,40,10,.05),0 18px 40px -22px rgba(90,60,20,.28);display:grid;gap:1rem;min-width:0}
 .pole legend{float:left;width:100%;font:500 1.15rem/1.2 var(--f-d);padding:0;margin-bottom:.2rem}
 .pole label{display:grid;gap:.45rem;font-size:.92rem;color:var(--ink-2)}
 .volby{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
@@ -252,7 +265,7 @@ button{font:inherit;color:inherit}
 .volba > span{display:grid;gap:.2rem;padding:.85rem 1rem;border-radius:var(--r-s);border:1px solid var(--linka);background:#fff;transition:border-color .2s,box-shadow .2s,background .2s;min-height:3.9rem}
 .volba b{font:500 1rem/1.2 var(--f-d);color:var(--ink)}
 .volba small{font-size:.85rem;color:var(--ink-3)}
-.volba input:checked + span{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);background:#fbfcff}
+.volba input:checked + span{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);background:#fff}
 .volba input:focus-visible + span{outline:2px solid var(--ink);outline-offset:2px}
 .vstup{display:flex;align-items:center;background:#fff;border:1px solid var(--linka);border-radius:var(--r-s);transition:border-color .2s}
 .vstup:focus-within{border-color:var(--ink)}
@@ -261,16 +274,16 @@ button{font:inherit;color:inherit}
 .napady{display:flex;flex-wrap:wrap;gap:.5rem}
 .napady button{border:1px solid var(--linka);background:#fff;border-radius:999px;padding:.6rem .95rem;font-size:.88rem;cursor:pointer;min-height:2.6rem;transition:border-color .2s}
 .napady button:hover{border-color:var(--ink)}
-.nahrat{display:flex!important;align-items:center;gap:1rem!important;grid-template-columns:none!important;padding:.9rem 1rem;border:1px dashed #b9c6db;border-radius:var(--r-s);cursor:pointer;position:relative;transition:border-color .2s,background .2s}
+.nahrat{display:flex!important;align-items:center;gap:1rem!important;grid-template-columns:none!important;padding:.9rem 1rem;border:1px dashed #cdbd9f;border-radius:var(--r-s);cursor:pointer;position:relative;transition:border-color .2s,background .2s}
 .nahrat:hover{border-color:var(--ink);background:#fff}
 .nahrat input{position:absolute;inset:0;opacity:0;cursor:pointer}
 .nahrat:focus-within{outline:2px solid var(--ink);outline-offset:2px}
-.nahrat__ikona{width:2.4rem;height:2.4rem;border-radius:50%;background:var(--nebe-2);display:grid;place-items:center;font:400 1.4rem/1 var(--f-d);color:var(--ink);flex:none}
+.nahrat__ikona{width:2.4rem;height:2.4rem;border-radius:50%;background:var(--krem-2);display:grid;place-items:center;font:400 1.4rem/1 var(--f-d);color:var(--ink);flex:none}
 .nahrat b{display:block;font:500 1rem/1.3 var(--f-d);color:var(--ink)}
 .nahrat small{font-size:.85rem;color:var(--ink-3)}
 .pocet{display:inline-flex;align-items:center;border:1px solid var(--linka);border-radius:999px;background:#fff;width:max-content}
 .pocet button{width:3rem;height:3rem;border:0;background:none;font-size:1.4rem;cursor:pointer;border-radius:50%}
-.pocet button:hover{background:var(--nebe)}
+.pocet button:hover{background:var(--krem-2)}
 .pocet input{width:4.5rem;min-height:44px;text-align:center;border:0;font:500 1.25rem/1 var(--f-d);color:var(--ink);background:none;-moz-appearance:textfield;appearance:textfield}
 .pocet input::-webkit-inner-spin-button,.pocet input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 .souhrn{padding:1.6rem;border-radius:var(--r);background:linear-gradient(150deg,var(--noc-2),var(--noc));color:#fff;display:grid;gap:.6rem}
@@ -307,26 +320,28 @@ button{font:inherit;color:inherit}
 @keyframes visacka-h{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.6deg)}}
 
 /* FLOTILA */
-.flotila{padding:var(--sekce) 0;overflow:clip}
+.flotila{padding:var(--sekce) 0;overflow:clip;background:var(--krem)}
 .flotila .sekce__hlava{max-width:var(--max);margin-left:auto;margin-right:auto;padding:0 var(--okraj);box-sizing:content-box}
 .flotila__sipky{display:flex;gap:.6rem;flex:none}
-.flotila__sipky button{width:3.25rem;height:3.25rem;border-radius:50%;border:1px solid var(--linka);background:#fff;cursor:pointer;display:grid;place-items:center;transition:border-color .2s}
-.flotila__sipky button:hover{border-color:var(--ink)}
+.flotila__sipky button{width:3.25rem;height:3.25rem;border-radius:50%;border:1px solid #d9ccb5;background:transparent;cursor:pointer;display:grid;place-items:center;transition:border-color .2s}
+.flotila__sipky button:hover{border-color:var(--ink);background:#fff}
 .flotila__sipky .sipka{background:none;width:1.2rem;height:1.2rem}
 .flotila__pas{list-style:none;margin:0;padding:.5rem max(var(--okraj),calc((100vw - var(--max)) / 2)) 1.5rem;display:grid;grid-auto-flow:column;grid-auto-columns:clamp(15rem,26vw,22rem);gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:max(var(--okraj),calc((100vw - var(--max)) / 2));scrollbar-width:none;overscroll-behavior-x:contain}
 .flotila__pas::-webkit-scrollbar{display:none}
-.auto{scroll-snap-align:start;background:var(--bila);border-radius:var(--r);padding:.6rem .6rem 1.25rem;display:flex;flex-direction:column;gap:1.1rem;border:1px solid var(--linka);transition:border-color .3s,box-shadow .3s}
-.auto:hover{border-color:#cbd6e8;box-shadow:var(--stin)}
-.auto__foto{border-radius:calc(var(--r) - 8px);background:radial-gradient(60% 16% at 50% 84%,rgba(18,26,51,.22),transparent 70%),linear-gradient(180deg,#f8fafd 0%,#eef3fa 64%,#e3eaf5 100%);padding:1.6rem 1rem 1rem}
-.auto img{width:100%;aspect-ratio:2.05;object-fit:contain;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.auto{scroll-snap-align:start;display:flex;flex-direction:column;gap:1rem}
+
+.auto__foto{position:relative;border-radius:20px;overflow:hidden;isolation:isolate;padding:2.6rem 1.1rem 1.4rem;
+  background:radial-gradient(58% 13% at 50% 86%,rgba(4,8,22,.55),transparent 72%),radial-gradient(130% 34% at 50% 100%,#f4f6fb 0%,#d9e0ee 40%,rgba(160,176,212,.0) 72%),radial-gradient(70% 60% at 50% 18%,#2c3f7a 0%,transparent 70%),linear-gradient(180deg,#0d1430,#1a2654 70%,#2a3a6e)}
+.auto__foto::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.7;background-image:radial-gradient(1.6px 1.6px at 24px 30px,#fff 50%,transparent 52%),radial-gradient(1.2px 1.2px at 96px 74px,rgba(255,255,255,.8) 50%,transparent 52%),radial-gradient(2px 2px at 170px 22px,rgba(255,255,255,.75) 50%,transparent 52%),radial-gradient(1.3px 1.3px at 60px 120px,rgba(255,255,255,.6) 50%,transparent 52%);background-size:200px 150px}
+.auto img{position:relative;width:100%;aspect-ratio:2.05;object-fit:contain;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .6s ease}
 .auto:hover img{transform:scale(1.04)}
-.auto p{font:500 1.3rem/1.2 var(--f-d);padding:0 .75rem;letter-spacing:-.01em}
+.auto p{font:500 1.3rem/1.2 var(--f-d);padding:0 .35rem;letter-spacing:-.01em}
 .auto small{display:block;font:500 .78rem/1.3 var(--f-t);color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem}
 .flotila__pata{max-width:var(--max);margin:1rem auto 0;padding:0 var(--okraj);box-sizing:content-box;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
 .flotila__pata .tlacitko{font-size:.98rem}
 
 /* RECENZE */
-.recenze{padding:var(--sekce) var(--okraj);background:var(--perlet);border-block:1px solid var(--linka)}
+.recenze{padding:var(--sekce) var(--okraj);background:var(--perlet)}
 .recenze__in{max-width:var(--max);margin:0 auto}
 .recenze__hlava{display:flex;justify-content:space-between;align-items:end;gap:2rem;margin-bottom:clamp(2.5rem,5vw,4rem)}
 .recenze__hlava h2{max-width:30rem}
@@ -334,14 +349,15 @@ button{font:inherit;color:inherit}
 .recenze__skore > b{font:400 4rem/1 var(--f-d);letter-spacing:-.04em}
 .recenze__skore > span{font-size:.92rem;color:var(--ink-2);line-height:1.5}
 .recenze__skore:hover > span{text-decoration:underline}
-.recenze__mrizka{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.recenze__karta{margin:0;padding:1.75rem;background:#fff;border-radius:var(--r);border:1px solid var(--linka);display:flex;flex-direction:column;gap:1rem}
-.recenze__karta blockquote{margin:0;font:400 1.15rem/1.5 var(--f-d);letter-spacing:-.005em;flex:1}
-.recenze__karta figcaption{font-size:.95rem;color:var(--ink-3)}
+.recenze__mrizka{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,4vw,3.5rem)}
+.recenze__karta{position:relative;margin:0;padding:1.6rem 0 0;border-top:1px solid var(--zlato);display:flex;flex-direction:column;gap:1rem}
+.recenze__karta::before{content:"“";display:block;height:2.2rem;margin-bottom:-.6rem;font:400 5rem/1 var(--f-d);color:var(--cervena)}
+.recenze__karta blockquote{margin:0;font:400 1.3rem/1.45 var(--f-d);letter-spacing:-.01em;flex:1}
+.recenze__karta figcaption{font-size:.95rem;color:var(--ink-3);padding-top:.25rem}
 .recenze__karta figcaption a{color:var(--ink-2)}
 
 /* OTÁZKY */
-.otazky{position:relative;padding:var(--sekce) var(--okraj);overflow-x:clip}
+.otazky{position:relative;padding:var(--sekce) var(--okraj);overflow-x:clip;background:var(--krem)}
 .otazky__in{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(2rem,6vw,6rem);align-items:start}
 .otazky__hlava{position:sticky;top:7rem}
 .otazky__hlava p{margin:1.25rem 0 1.75rem;color:var(--ink-2);max-width:26rem}
@@ -350,7 +366,7 @@ button{font:inherit;color:inherit}
 .otazky details:first-child{border-top:1px solid var(--linka)}
 .otazky summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.35rem 0;font:500 1.2rem/1.3 var(--f-d);min-height:3rem}
 .otazky summary::-webkit-details-marker{display:none}
-.otazky summary::after{content:"";width:1.75rem;height:1.75rem;flex:none;border-radius:50%;background:var(--nebe) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3.5v9M3.5 8h9' stroke='%230f1218' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") center/12px no-repeat;transition:transform .3s}
+.otazky summary::after{content:"";width:1.75rem;height:1.75rem;flex:none;border-radius:50%;background:var(--krem-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3.5v9M3.5 8h9' stroke='%230f1218' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") center/12px no-repeat;transition:transform .3s}
 .otazky details[open] summary::after{transform:rotate(45deg)}
 .otazky details p{padding:0 3rem 1.5rem 0;color:var(--ink-2)}
 
@@ -376,12 +392,12 @@ button{font:inherit;color:inherit}
 .brana__kontakt a{color:#fff;font-weight:500}
 
 /* PATIČKA */
-.paticka{background:var(--bila);border-top:1px solid var(--linka)}
-.paticka__in{max-width:var(--max);margin:0 auto;padding:2.5rem var(--okraj) 3rem;box-sizing:content-box;display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2rem;font-size:.88rem;color:var(--ink-3)}
+.paticka{background:#0b1129;color:rgba(255,255,255,.6);border-top:1px solid rgba(255,255,255,.08)}
+.paticka__in{max-width:var(--max);margin:0 auto;padding:2.5rem var(--okraj) 3rem;box-sizing:content-box;display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2rem;font-size:.88rem;color:rgba(255,255,255,.62)}
 .paticka__in img{height:34px;width:auto}
 .paticka__odkazy{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-left:auto}
 .paticka__odkazy a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px;font-size:.9rem}
-.paticka__odkazy a:hover{color:var(--ink);text-decoration:underline}
+.paticka__odkazy a:hover{color:#fff;text-decoration:underline}
 
 /* TEXTOVÉ STRÁNKY */
 .text-stranka{max-width:44rem;margin:0 auto;padding:10rem var(--okraj) var(--sekce)}
@@ -392,6 +408,8 @@ button{font:inherit;color:inherit}
 .text-stranka p + p{margin-top:1rem}
 
 /* objevování a jemný pohyb mraků se scrollem */
+img[loading="lazy"]{transition:opacity .6s ease}
+img.ceka{opacity:0!important}
 .objev{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
 .objev.je-videt{opacity:1;transform:none}
 @supports (animation-timeline:scroll()){
