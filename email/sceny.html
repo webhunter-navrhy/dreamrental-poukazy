@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<!-- Scény pro HTML e-mail: render.py z nich udělá obrázky (2× pro retinu). Velikosti = šířky v e-mailu. -->
+<link rel="stylesheet" href="../static/css/style.css">
+<style>
+  html,body{margin:0;background:transparent;font-family:"Outfit",system-ui,sans-serif}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .sc{position:relative;overflow:hidden;margin:0 0 40px}
+  .krem{background:#f8f3ea}
+  .noc{--noc:#121a33}
+
+  /* hvězdy a sníh (statické) */
+  .hv{position:absolute;inset:0;background-image:
+    radial-gradient(1.2px 1.2px at 12% 18%,#fff 50%,transparent 51%),radial-gradient(.9px .9px at 27% 8%,#fff 50%,transparent 51%),
+    radial-gradient(1.4px 1.4px at 44% 26%,#fff6d6 50%,transparent 51%),radial-gradient(.9px .9px at 58% 12%,#fff 50%,transparent 51%),
+    radial-gradient(1.1px 1.1px at 71% 30%,#fff 50%,transparent 51%),radial-gradient(.9px .9px at 83% 9%,#fff 50%,transparent 51%),
+    radial-gradient(1.3px 1.3px at 92% 22%,#fff6d6 50%,transparent 51%),radial-gradient(.9px .9px at 6% 40%,#fff 50%,transparent 51%),
+    radial-gradient(1px 1px at 36% 44%,#fff 50%,transparent 51%),radial-gradient(.9px .9px at 64% 48%,#fff 50%,transparent 51%);opacity:.75}
+  .sn{position:absolute;inset:0;background-image:
+    radial-gradient(1.8px 1.8px at 20px 30px,#fff 50%,transparent 52%),radial-gradient(1.3px 1.3px at 140px 90px,#fff 50%,transparent 52%),
+    radial-gradient(2.1px 2.1px at 260px 40px,rgba(255,255,255,.9) 50%,transparent 52%),radial-gradient(1.5px 1.5px at 90px 200px,#fff 50%,transparent 52%),
+    radial-gradient(1.7px 1.7px at 210px 260px,rgba(255,255,255,.85) 50%,transparent 52%),radial-gradient(1.2px 1.2px at 300px 170px,#fff 50%,transparent 52%),
+    radial-gradient(2px 2px at 50px 360px,rgba(255,255,255,.9) 50%,transparent 52%),radial-gradient(1.3px 1.3px at 180px 420px,#fff 50%,transparent 52%),
+    radial-gradient(1.6px 1.6px at 330px 330px,#fff 50%,transparent 52%);background-size:360px 480px;opacity:.55}
+  .sn--b{background-size:520px 480px;background-position:120px 60px;opacity:.35;filter:blur(.5px);transform:scale(1.3)}
+
+  /* 1) světýlka */
+  #svetla{width:600px;height:58px;background:#121a33}
+  #svetla .svetylka{position:absolute;top:-30px;left:50%;width:900px;transform:translateX(-50%)}
+
+  /* 2) hero */
+  #hero{width:600px;height:440px;background:
+    radial-gradient(55% 45% at 52% 50%,rgba(80,104,180,.5),transparent 70%),
+    linear-gradient(180deg,#121a33 0%,#1d2a52 48%,#33477e 82%,#4a5f96 100%)}
+  #hero .zare{position:absolute;left:50%;top:44%;width:520px;height:360px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(255,214,140,.36),rgba(255,214,140,.08) 60%,transparent)}
+  #hero .dar{position:absolute;left:50%;top:22px;width:520px;transform:translateX(-50%);filter:drop-shadow(0 36px 40px rgba(0,0,0,.4));z-index:2}
+  #hero .andel{position:absolute;width:128px;left:28px;top:18px;z-index:3;transform:rotate(-4deg);filter:drop-shadow(0 14px 18px rgba(0,0,0,.3))}
+  #hero .cesmina{position:absolute;width:88px;right:34px;top:48px;z-index:3;transform:rotate(16deg) scaleX(-1);filter:drop-shadow(0 6px 10px rgba(0,0,0,.3))}
+  #hero .mraky{position:absolute;left:-40px;right:-40px;bottom:-6px;height:150px;z-index:4}
+  #hero .mraky img{position:absolute;bottom:0;filter:drop-shadow(0 -10px 26px rgba(10,16,40,.25))}
+  #hero .mraky::after{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(180deg,rgba(248,243,234,0),#f8f3ea 75%);z-index:5}
+
+  /* 3) karty dárků */
+  .foto{background:#0d1430;border-radius:22px 22px 0 0;overflow:hidden;isolation:isolate}
+  .foto .poz{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 72%;z-index:-2}
+  .foto::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,17,41,.35),transparent 40%,transparent 70%,rgba(13,20,48,.6) 90%,#0d1430)}
+  .foto::before{content:"";position:absolute;left:50%;top:-34%;width:120%;height:70%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,200,120,.24),transparent);z-index:1}
+  .foto .vuz{position:absolute;left:50%;transform:translateX(-50%);z-index:2;filter:drop-shadow(0 18px 16px rgba(0,0,0,.45))}
+  .foto .stin{position:absolute;left:50%;transform:translateX(-50%);height:26px;border-radius:50%;background:radial-gradient(closest-side,rgba(6,10,25,.7),rgba(6,10,25,.2) 60%,transparent);filter:blur(4px);z-index:1}
+  .foto .sn{z-index:3;opacity:.7}
+  .odznak{position:absolute;top:18px;left:18px;z-index:4;display:inline-flex;align-items:center;gap:7px;font:500 14px/1 "Outfit";background:rgba(255,255,255,.12);border:1px solid rgba(232,199,122,.6);color:#e8c77a;padding:8px 13px 8px 11px;border-radius:999px;backdrop-filter:blur(8px)}
+  .odznak i{width:12px;height:12px;background:#e8c77a;-webkit-mask:var(--hvezda) center/contain no-repeat}
+  #cyber{width:552px;height:330px}
+  #cyber .vuz{width:410px;bottom:44px}
+  #cyber .stin{width:360px;bottom:40px}
+  .mala{width:264px;height:196px}
+  .mala .vuz{width:220px;bottom:24px}
+  .mala .stin{width:200px;bottom:20px;height:18px}
+
+  /* 4) poukaz */
+  #poukaz{width:552px;height:420px;background:#f8f3ea}
+  #poukaz .karta{position:absolute;left:36px;right:36px;top:104px;width:auto}
+  #poukaz .karta__logo{width:21cqw}
+  #poukaz .banka{position:absolute;top:0}
+  #poukaz .banka svg{width:30px;height:auto}
+
+  /* 5) flotila */
+  .dl{width:264px;height:150px;border-radius:18px;background:radial-gradient(80% 70% at 50% 85%,#fff 0%,transparent 70%),linear-gradient(180deg,#e9f1fc 0%,#d5e3f7 100%)}
+  .dl-wrap{background:#f8f3ea;display:inline-block}
+  .dl .vuz{position:absolute;left:50%;bottom:20px;width:224px;transform:translateX(-50%);filter:drop-shadow(0 12px 10px rgba(30,50,90,.25))}
+  .dl .stin{position:absolute;left:50%;bottom:18px;width:190px;height:16px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(30,45,80,.35),transparent);filter:blur(3px)}
+
+  /* 6) brána */
+  #brana{width:600px;height:380px;background:radial-gradient(60% 70% at 50% 52%,#2d4180 0%,transparent 72%),#121a33}
+  #brana .zare{position:absolute;left:50%;top:46%;width:380px;height:380px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(255,206,120,.6),rgba(255,190,100,.18) 55%,transparent)}
+  #brana .obr{position:absolute;left:50%;top:22px;width:370px;transform:translateX(-50%);filter:drop-shadow(0 34px 40px rgba(0,0,0,.45));z-index:2}
+  #brana .dole{position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(180deg,rgba(18,26,51,0),#121a33);z-index:3}
+
+  /* 7) loga */
+  #logo-bile{width:150px;height:46px;background:transparent}
+  #logo-bile img,#logo-tmave img{width:150px;height:auto;display:block}
+  #logo-tmave{width:150px;height:46px;background:transparent}
+</style>
+</head>
+<body>
+
+<div class="sc" id="svetla">__SVETYLKA__</div>
+
+<div class="sc" id="hero">
+  <span class="hv"></span><span class="zare"></span>
+  <span class="sn"></span><span class="sn sn--b"></span>
+  <img class="andel" src="../img/scena/andel.webp" alt="">
+  <img class="dar" src="../img/scena/darek-na-mraku.webp" alt="">
+  <img class="cesmina" src="../img/scena/cesmina.webp" alt="">
+  <div class="mraky">
+    <img src="../img/scena/mrak-1.webp" style="left:-30px;width:250px">
+    <img src="../img/scena/mrak-3.webp" style="left:170px;width:200px;bottom:26px;transform:scaleX(-1)">
+    <img src="../img/scena/mrak-1.webp" style="left:300px;width:270px">
+    <img src="../img/scena/mrak-3.webp" style="left:520px;width:200px;bottom:20px">
+  </div>
+</div>
+
+<div class="sc foto" id="cyber">
+  <img class="poz" src="../img/scena/atelier.webp" alt="">
+  <span class="stin"></span>
+  <img class="vuz" src="../img/auta/tesla-cybertruck.webp" alt="">
+  <span class="sn"></span>
+  <span class="odznak"><i></i>Nejoblíbenější</span>
+</div>
+
+<div class="sc foto mala" id="m2">
+  <img class="poz" src="../img/scena/atelier.webp" alt="">
+  <span class="stin"></span>
+  <img class="vuz" src="../img/auta/bmw-m2.webp" alt="">
+  <span class="sn"></span>
+</div>
+
+<div class="sc foto mala" id="amg">
+  <img class="poz" src="../img/scena/atelier.webp" alt="" style="object-position:30% 72%">
+  <span class="stin"></span>
+  <img class="vuz" src="../img/auta/mercedes-amg-gt-63s.webp" alt="">
+  <span class="sn"></span>
+</div>
+
+<div class="sc" id="poukaz">
+  <span class="banka" style="left:22px"><svg viewBox="0 0 40 112"><line x1="20" y1="0" x2="20" y2="60" stroke="#c9b27a" stroke-width="1"/><rect x="15" y="60" width="10" height="6" rx="1.5" fill="#c99a3e"/><circle cx="20" cy="84" r="18" fill="url(#bc)"/><ellipse cx="13" cy="76" rx="4" ry="6" fill="#fff" opacity=".35"/></svg></span>
+  <span class="banka" style="left:56px"><svg viewBox="0 0 40 72"><line x1="20" y1="0" x2="20" y2="20" stroke="#c9b27a" stroke-width="1"/><rect x="15" y="20" width="10" height="6" rx="1.5" fill="#c99a3e"/><circle cx="20" cy="44" r="18" fill="url(#bz)"/><ellipse cx="13" cy="36" rx="4" ry="6" fill="#fff" opacity=".35"/></svg></span>
+  <span class="banka" style="left:496px"><svg viewBox="0 0 40 92"><line x1="20" y1="0" x2="20" y2="40" stroke="#c9b27a" stroke-width="1"/><rect x="15" y="40" width="10" height="6" rx="1.5" fill="#c99a3e"/><circle cx="20" cy="64" r="18" fill="url(#bz)"/><ellipse cx="13" cy="56" rx="4" ry="6" fill="#fff" opacity=".35"/></svg></span>
+  <div class="karta">
+    <div class="karta__obsah">
+      <span class="karta__snih"></span>
+      <img class="karta__logo" src="../static/logo-bila.svg" alt="">
+      <p class="karta__typ">Dárkový poukaz · Vánoce 2026</p>
+      <p class="karta__nazev">Den s&nbsp;Teslou Cybertruck</p>
+      <p class="karta__od">pro vás od <span>vaší firmy</span></p>
+      <p class="karta__venovani">Děkujeme za skvělý rok. Užijte si jízdu!</p>
+      <dl class="karta__udaje">
+        <div><dt>Platnost</dt><dd>12 měsíců</dd></div>
+        <div><dt>Termín</dt><dd>podle vás</dd></div>
+        <div><dt>Kód</dt><dd>DR-2026-••••</dd></div>
+      </dl>
+    </div>
+    <div class="karta__stuha">
+      <svg class="karta__masle" viewBox="0 0 120 70" width="120" height="70"><defs><linearGradient id="zl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dc9a"/><stop offset=".5" stop-color="#d4a84f"/><stop offset="1" stop-color="#a87a2a"/></linearGradient></defs><path d="M60 36C44 10 14 4 10 18s20 22 50 18z" fill="url(#zl)"/><path d="M60 36C76 10 106 4 110 18S90 40 60 36z" fill="url(#zl)"/><path d="M57 38 40 68l9-2 6 4 5-30zM63 38l17 30-9-2-6 4-5-30z" fill="url(#zl)" opacity=".9"/><ellipse cx="60" cy="36" rx="9" ry="8" fill="#e9c477"/></svg>
+      <div class="karta__visacka"><span>Vaše logo</span></div>
+    </div>
+    <img class="karta__auto" src="../img/auta/tesla-cybertruck.webp" alt="">
+  </div>
+</div>
+
+__FLOTILA__
+
+<div class="sc" id="brana">
+  <span class="hv" style="inset:0"></span><span class="sn"></span>
+  <span class="zare"></span>
+  <img class="obr" src="../img/scena/brana-vyrez.webp" alt="">
+  <span class="dole"></span>
+</div>
+
+<div class="sc" id="logo-bile"><img src="../static/logo-bila.svg" alt=""></div>
+<div class="sc" id="logo-tmave"><img src="../static/logo.svg" alt=""></div>
+
+<svg width="0" height="0" style="position:absolute"><defs><radialGradient id="bz" cx=".35" cy=".3"><stop offset="0" stop-color="#f6dc9a"/><stop offset=".6" stop-color="#c99a3e"/><stop offset="1" stop-color="#8a6420"/></radialGradient><radialGradient id="bc" cx=".35" cy=".3"><stop offset="0" stop-color="#e0566a"/><stop offset=".6" stop-color="#a8243a"/><stop offset="1" stop-color="#6e1224"/></radialGradient></defs></svg>
+</body>
+</html>
